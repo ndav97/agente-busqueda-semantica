@@ -1,0 +1,3219 @@
+See discussions, st ats, and author pr ofiles f or this public ation at : https://www .researchgate.ne t/public ation/375824964
+PYTHON PARA DESARROLLADORES: UN LENGUAJE DE ALTO NIVEL
+Book  · Januar y 2023
+CITATIONS
+0READS
+149
+1 author:
+Carlos P olanc o
+National Instit ute of Car diolog y
+356 PUBLICA TIONS    664 CITATIONS    
+SEE PROFILE
+All c ontent f ollo wing this p age was uplo aded b y Carlos P olanc o on 28 No vember 2023.
+The user has r equest ed enhanc ement of the do wnlo aded file.
+PYTHON PARA
+DESARROLLADORES
+UN LENGUAJE DE ALTO NIVEL
+Carlos Polanco
+28 de noviembre de 2023
+i
+Derechos de Autor
+Estimado lector, si encuentra ´ util la informaci´ on conten ida en este libro y decide referirlo en su trabajo,
+investigaci´ on o publicaci´ on, le ruego cite adecuadament e este trabajo. Al hacerlo, contribuye a reconocer el
+esfuerzoyladedicaci´ oninvertidosenlacreaci´ ondeeste materialypromueveelrespetoporlosderechosdeau-
+tor. A continuaci´ on, proporciono un formato sugerido para citar este libro: Carlos Polanco (2024). PYTHON
+PARA DESARROLLADORES: UN LENGUAJE DE ALTO NIVEL. DOI: 10.13 140/RG.2.2.24691.91680,
+ResearchGate GmbH. De antemano aprecio su cooperaci´ on y re speto por la propiedad intelectual.
+Este trabajo, “Python para Desarrolladores: Un Lenguaje de Alto Nivel”, creado por Carlos Polanco, est´ a
+disponible bajo una licencia Creative Commons Attribution 4.0 International (CC BY 4.0). Esta
+licencia permite a otros compartir, copiar, distribuir, y u sar el trabajo, incluso con ﬁnes comerciales, siempre
+y cuando se reconozca la autor´ ıa original.
+Dear reader, if you ﬁnd the information contained in this boo k useful and choose to reference it in your
+work, research, or publication, I kindly ask that you proper ly cite this work. By doing so, you contribute
+to acknowledging the eﬀort and dedication invested in the cr eation of this material and promote respect
+for copyright. Below, I provide a suggested format for citin g this book: Carlos Polanco (2024). PYTHON
+PARA DESARROLLADORES: UN LENGUAJE DE ALTO NIVEL. DOI: 10.13 140/RG.2.2.24691.916 80,
+ResearchGate GmbH. I appreciate in advance your cooperatio n and respect for intellectual property.
+Thiswork,“PythonparaDesarrolladores:UnLenguajedeAlt oNivel”,createdbyCarlosPolanco,isavailable
+under a Creative Commons Attribution 4.0 International (CC BY 4.0) license. This license allows
+others to share, copy, distribute, and use the work, even for commercial purposes, as long as the original
+authorship is credited.
+Word processor: L ATEX©2023; Operating system: Linux Fedora-39 ©2023.
+Software: QuillBot (Course Hero), LLC. ©2023, &ChatGPT 4.0 OpenAI ©2023.
+ii
+Nota al Lector
+Este libro introduce la programaci´ on en Python mediante ca sos pr´ acticos enfocados en Inteligencia Artiﬁcial,
+utilizando ChatGPT [2] para una comprensi´ on m´ as profunda de la programaci´ on en este lenguaje.
+Se asume que el lector posee conocimientos previos y experie ncia pr´ actica en programaci´ on con GNU Linux
+Fedora, ya que la codiﬁcaci´ on de los programas Python se rea lizar´ a en esta plataforma, utilizando la terminal
+de Linux Fedora.
+El libro est´ a enriquecido con hiperv´ ınculos que facilita n la consulta de las distintas secciones del ´ ındice de
+contenidos. Adem´ as, incluye accesos directos a programas ejempliﬁcados para una mejor comprensi´ on de los
+conceptos, complementados con videos ilustrativos.
+El curso, que se llevar´ a a cabo de junio a octubre de 2024, uti lizar´ a este libro como material de texto
+principal. Los participantes que completen todas las tutor ´ ıas impartidas por el Dr. Brayans Becerra re-
+cibir´ an una constancia oﬁcial. Para consultas, contactar al Dr. Becerra en el siguiente correo electr´ onico:
+pacorro28144@hotmail.com .
+El autor desea expresar su agradecimiento al Instituto de Ci encias Nucleares y a la Facultad de Ciencias
+de la Universidad Nacional Aut´ onoma de M´ exico, as´ ı como a l Instituto Nacional de Cardiolog´ ıa “Ignacio
+Ch´ avez”, por su apoyo en la elaboraci´ on de este libro.
+CONFLICTO DE INTER ´ES
+El autor declara que no existe ning´ un conﬂicto de inter´ es r especto al contenido de este libro.
+Carlos Polanco
+Correo:polanco@unam.mx
+Departamento de Nuevas Tecnolog´ ıas y Protecci´ on Intelec tual
+Instituto Nacional de Cardiolog´ ıa “Ignacio Ch´ avez”
+M´ exico
+Departamento de Matem´ aticas, Facultad de Ciencias
+Universidad Nacional Aut´ onoma de M´ exico
+M´ exico
+iii
+Agradecimientos
+Quiero agradecer a la Maestra en Ciencias Martha Rios Castro por la revisi´ on de este libro, lo cual imprimi´ o
+claridad a las secciones, al Doctor en Ciencias Brayans Bece rra Luna por estar a cargo de las tutor´ ıas, y a
+la Licenciada Maritza Rosas por el dise˜ no de la portada.
+iv
+´Indice general
+1. Introducci´ on 3
+1.1. sUn Lenguaje con Enfoque Matem´ atico-Computacional . . . . . . . . . . . . . . . . . . . . . 3
+1.2. Enfoque y Ventajas . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2. Fundamentos de Programaci´ on 5
+2.1. Conceptos B´ asicos . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+2.2. Tipos de datos y variables . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.3. Operadores y Expresiones . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+2.4. Estructuras de Control . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2.5. Funciones y M´ odulos . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+2.6. Caso Pr´ actico . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+3. Listas 15
+3.1. Listas Unidimensionales en Python . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+3.2. Listas Bidimensionales en Python . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+3.3. Listas Tridimensionales en Python . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+3.4. Caso Pr´ actico . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+4. Bibliotecas Cient´ ıﬁcas 19
+4.1. Biblioteca NumPypara C´ alculo Num´ erico . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+4.2. Principales Funciones de NumPy. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+4.3. Biblioteca Pandaspara Manipulaci´ on de Datos . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+4.4. Principales Funciones de Pandas . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+4.5. Visualizaci´ on con Matplotlib . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+4.6. Ventajas de Matplotlib . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+4.7. Tabla de Funciones de Matplotlib . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+4.8. Caso Pr´ actico . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+5. Manejo de Excepciones 33
+5.1. Errores Comunes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+5.1.1. Bloques tryyexcept . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+5.2. Manejo de Excepciones Personalizadas . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+5.3. Caso Pr´ actico . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+5.3.1. Sin excepciones (sin manejo de errores) . . . . . . . . . . . . . . . . . . . . . . . . . . 35
+5.3.2. Con excepciones (manejo de errores) . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
+6. Manipulaci´ on de Archivos 37
+6.1. Lectura y Escritura de Archivos . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37
+6.2. Rutas de Archivos . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37
+6.3. Archivos CSV . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37
+6.4. Archivos JSON . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 38
+6.5. Archivos XML . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 38
+6.6. Caso Pr´ actico . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 38
+v
+vi ´INDICE GENERAL
+7. Base de Datos SQLite 41
+7.1. Facilidades . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 41
+7.2. Componentes y Uso . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 42
+7.3. Caso Pr´ actico . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 43
+8. Importancia de las Pruebas Unitarias 45
+8.1. Commando assert. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 45
+8.2. Biblioteca unittest . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 46
+8.3. Biblioteca pytest. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 46
+8.4. Estrategias de Pruebas . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 47
+8.4.1. Test-Driven Development . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 47
+8.4.2. Behavior-Driven Development . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48
+8.4.3. Pruebas de Integraci´ on . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 49
+8.4.4. Pruebas de Regresi´ on . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 49
+8.5. Caso Pr´ actico . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 50
+9. Automatizaci´ on de Tareas 53
+9.1. Procesamiento de Archivos en Lote . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 53
+9.2. Automatizaci´ on de Env´ ıo de Correos Electr´ onicos . . . . . . . . . . . . . . . . . . . . . . . . . 53
+9.3. Tareas de Administraci´ on del Sistema . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 54
+9.4. Caso Pr´ actico . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 54
+10.Seguridad en Python 57
+10.1.Mejores Pr´ acticas de Seguridad . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 57
+10.2.Evitar Vulnerabilidades Comunes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 57
+10.3.Protecci´ on de Aplicaciones . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 57
+10.4.Caso Pr´ actico . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 58
+11.Programaci´ on Orientada a Objetos 61
+11.1.Deﬁniciones B´ asicas . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 61
+11.1.1. Objetos . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 61
+11.1.2. Clases . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 61
+11.1.3. Herencia . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 61
+11.1.4. Polimorﬁsmo . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 61
+11.1.5. Clases y Objetos . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 61
+11.1.6. Creaci´ on de Objetos . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 62
+11.1.7. Acceso a Atributos y M´ etodos . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 62
+11.2.Herencia y Polimorﬁsmo . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 62
+11.2.1. Herencia . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 62
+11.2.2. Polimorﬁsmo . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 63
+11.2.3. Encapsulaci´ on y Abstracci´ on . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 63
+11.2.4. Encapsulaci´ on . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 63
+11.2.5. Abstracci´ on . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 64
+11.3.Caso Pr´ actico . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 64
+12.Machine Learning con Python 67
+12.1.Deﬁnici´ on de Machine Learning . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 67
+12.2.Ventajas de Python en Machine Learning . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 67
+12.3.Machine Learning y Scikit-learn . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 67
+12.4.Desglose del C´ odigo . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 68
+12.5.Usos del Machine Learning con Python . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 71
+12.6.Visualizaci´ on con Scikit-learn . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 71
+12.7.Funciones Principales . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 71
+12.8.Modelos de Clasiﬁcaci´ on y Regresi´ on . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 71
+12.9.Caso Pr´ actico . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 75
+´INDICE GENERAL 1
+Casos Pr´ acticos
+# Descripci´ on P´ agina
+1 Escritura, y ejecuci´ on del programa holamundo.py . 6
+2 Tipos de datos num´ ericos y alfanum´ ericos. 7
+3 Tipos de operadores aritm´ eticos, logicos y condicionale s. 10
+4 Estructuras de control. 11
+5 Deﬁnici´ on de funciones. 12
+6 Uso de la biblioteca NumPy. 22
+7 Uso de la biblioteca Pandas 25
+8 Uso de la biblioteca Matplotlib 25
+9 Uso de la biblioteca Scikit-learn 67
+10 Uso de listas 18
+11 Uso de base de datos SQLite 44
+2 ´INDICE GENERAL
+Cap´ ıtulo 1
+Introducci´ on
+La ense˜ nanza y el aprendizaje de Python en el contexto de la i nteligencia artiﬁcial (IA) se potencian enor-
+memente cuando se enriquecen con casos de estudio pr´ actico s. Este curso est´ a dise˜ nado para proporcionar
+una comprensi´ on profunda de Python no solo como un lenguaje de programaci´ on, sino tambi´ en como una
+herramienta esencial en el desarrollo de soluciones de IA. A trav´ es de una serie de casos de estudio cuidado-
+samente seleccionados, los estudiantes tendr´ an la oportu nidad de aplicar teor´ ıas y conceptos en situaciones
+del mundo real, abordando problemas y desaf´ ıos t´ ıpicos en el campo de la IA.
+El enfoque basado en casos de estudio permite una experienci a de aprendizaje m´ as interactiva y aplicada.
+Cada caso de estudio ha sido dise˜ nado para ilustrar y reforz ar los conceptos de Python y de inteligencia
+artiﬁcial. Los estudiantes no solo aprender´ an la sintaxis y las estructuras de Python, sino que tambi´ en ver´ an
+c´ omo se pueden utilizar estas herramientas para construir modelos de aprendizaje autom´ atico, procesar y
+analizar datos, y desarrollar sistemas inteligentes que pu eden aprender y adaptarse.
+A lo largo del curso, exploraremos una variedad de aplicacio nes de IA, desde el an´ alisis de datos hasta el
+aprendizajeprofundo,pasandoporelprocesamientodellen guajenaturalylasredesneuronales.Cadam´ odulo
+combina teor´ ıa con pr´ actica, asegurando que los estudian tes obtengan una comprensi´ on pr´ actica de c´ omo se
+puede utilizar Python para resolver problemas complejos en el mundo real. Al ﬁnal del curso, los estudiantes
+no solo ser´ an competentes en programaci´ on en Python, sino que tambi´ en tendr´ an una s´ olida comprensi´ on de
+c´ omo aplicar estas habilidades en el emocionante y en const ante evoluci´ on campo de la inteligencia artiﬁcial.
+1.1. sUn Lenguaje con Enfoque Matem´ atico-Computacional
+Python se ha establecido como un lenguaje de programaci´ on p redominante en el mundo de la ciencia compu-
+tacional y la matem´ atica aplicada. Su dise˜ no, que enfatiz a la legibilidad y la simplicidad, lo convierte en una
+herramienta ideal paraprofesionales y acad´ emicos que sea dentran enla programaci´ on computacional. Lasin-
+taxis clara y concisa de Python permite a los usuarios centra rse en los conceptos matem´ aticos y algor´ ıtmicos
+subyacentes, minimizando la distracci´ on causada por la co mplejidad del lenguaje de programaci´ on.
+Desde el punto de vista matem´ atico, Python ofrece una exten sa biblioteca de herramientas que facilitan
+la implementaci´ on de complejos c´ alculos num´ ericos y alg oritmos. Con bibliotecas como NumPyySciPy,
+Python proporciona una plataforma robusta para operacione s matem´ aticas que van desde el ´ algebra lineal
+b´ asica hasta la optimizaci´ on y la resoluci´ on de ecuacion es diferenciales. Estas herramientas no solo son
+poderosas sino tambi´ en accesibles, lo que permite a los cie nt´ ıﬁcos e ingenieros aplicar conceptos matem´ aticos
+a problemas pr´ acticos de manera eﬁciente.
+En el ´ ambito de la computaci´ on, Python destaca por su ﬂexib ilidad y su amplio rango de aplicaciones. Desde
+la escritura de programas simples hasta el desarrollo de sis temas complejos, Python se adapta a una variedad
+de necesidades de programaci´ on. Su capacidad para integra rse con otros lenguajes y herramientas, como C y
+Fortran, lo convierte en una elecci´ on ideal para proyectos que requieren un alto rendimiento computacional.
+Adem´ as, la amplia comunidad de Python contribuye activame nte al desarrollo y mejora de una gran cantidad
+3
+4 CAP´ITULO 1. INTRODUCCI ´ON
+de bibliotecas y frameworks, asegurando que el lenguaje sig a siendo relevante y efectivo para las necesidades
+computacionales modernas.
+1.2. Enfoque y Ventajas
+Python se ha establecido como uno de los lenguajes de program aci´ on m´ as vers´ atiles y demandados en el
+mundo moderno. Su simplicidad y legibilidad lo hacen ideal p ara principiantes, mientras que su poderosa
+colecci´ on de bibliotecas y frameworks lo convierten en una elecci´ on preferida para los desarrolladores web y
+de software.
+En el ´ ambito de la programaci´ on web, Python se destaca con f rameworks como Django y Flask, que facilitan
+el desarrollo de aplicaciones web robustas y escalables. Dj ango, conocido por su ’bater´ ıas incluidas’ enfoque,
+proporciona herramientas integradas para casi todas las ne cesidades del desarrollo web, mientras que Flask
+ofrece ﬂexibilidad y ligereza para proyectos m´ as peque˜ no s o personalizados.
+Adem´ as,Pythonjuegaunpapelcrucialeneldesarrollodete cnolog´ ıasmodernascomolaInteligenciaArtiﬁcial
+(IA), el Aprendizaje Autom´ atico (Machine Learning), y la C iencia de Datos. Bibliotecas como TensorFlow,
+PyTorch, y Pandas, han hecho que Python sea indispensable pa ra los profesionales que trabajan en estos
+campos emergentes.
+La combinaci´ on de versatilidad, facilidad de uso y la fuert e comunidad de soporte, contin´ ua asegurando que
+Python sea un pilar fundamental en el desarrollo tecnol´ ogi co contempor´ aneo.
+En el campo de la inteligencia artiﬁcial, Python se ha conver tido en el lenguaje de programaci´ on preferido por
+varias razones. Su simplicidad y facilidad de aprendizaje l o hacen accesible para profesionales de diferentes
+disciplinas, permitiendo que un p´ ublico m´ as amplio parti cipe en el desarrollo de soluciones de IA. Esta
+accesibilidad es crucial, ya que la IA es un campo interdisci plinario que beneﬁcia de la integraci´ on de
+conocimientos provenientes de la matem´ atica, la estad´ ıs tica, la ciencia de datos, la ingenier´ ıa, y m´ as.
+Python tambi´ en es elogiado por su extenso ecosistema de bib liotecas de IA y aprendizaje autom´ atico. He-
+rramientas como Keras, yPyTorch ofrecen capacidades avanzadas para la construcci´ on y entr enamiento
+de modelos de redes neuronales, mientras que bibliotecas co moScikit-learn brindan implementaciones
+eﬁcientes de una variedad de algoritmos de aprendizaje auto m´ atico. Estas bibliotecas no solo son potentes
+sino tambi´ en bien documentadas y respaldadas por una comun idad activa, lo que facilita su adopci´ on y uso
+en proyectos de IA.
+Adem´ as, la versatilidad de Python para manejar y procesar g randes conjuntos de datos es fundamental en
+la IA. La capacidad de integrarse con sistemas de bases de dat os y realizar an´ alisis de datos complejos con
+Pandas, por ejemplo, hace de Python una herramienta completa para e l ﬂujo de trabajo en proyectos de
+IA. Desde la recopilaci´ on y limpieza de datos hasta el model ado y la visualizaci´ on, Python ofrece soluciones
+coherentes y eﬁcientes.
+Python no solo facilita la implementaci´ on t´ ecnica de algo ritmos y modelos de IA, sino que tambi´ en sirve como
+un puente que conecta las ideas matem´ aticas y computaciona les con aplicaciones pr´ acticas en la inteligencia
+artiﬁcial. Esta combinaci´ on de accesibilidad, poder, y ﬂe xibilidad es lo que establece a Python como un pilar
+fundamental en el desarrollo actual y futuro de la IA.
+Cap´ ıtulo 2
+Fundamentos de Programaci´ on
+Python se destaca en el mundo de la programaci´ on por su enfoq ue en la legibilidad y eﬁciencia del c´ odigo.
+La ﬁlosof´ ıa de dise˜ no del lenguaje enfatiza la importanci a de un c´ odigo que sea f´ acil de leer y escribir, lo
+que no solo facilita el aprendizaje para los principiantes s ino que tambi´ en permite a los desarrolladores
+experimentados implementar soluciones complejas de maner a eﬁciente. En esta secci´ on, nos sumergiremos
+en las caracter´ ısticas que hacen de Python un lenguaje senc illo y accesible, y c´ omo estas caracter´ ısticas lo
+han convertido en una herramienta valiosa para programador es de todos los niveles.
+2.1. Conceptos B´ asicos
+Este documento presenta la documentaci´ on del programa holamundo.py , escrito en Python. Este programa
+es un ejemplo cl´ asico de introducci´ on a la programaci´ on, mostrando la simplicidad y la sintaxis b´ asica del
+lenguaje Python.
+El c´ odigo fuente del programa holamundo.py se muestra a continuaci´ on:
+1#!/usr/bin/env python3
+2# hola_mundo.py
+3# Este programa imprime "Hola Mundo" en la pantalla.
+4
+5print("Hola Mundo" )
+Para escribir este programa, debe abrirse una terminal en un sistema operativo Linux Fedora 39 y seguir los
+siguientes pasos:
+(1)Abrir el editor vi con el comando vi hola mundo.py .
+(2)Ingresar al modo de inserci´ on presionando i.
+(3)Escribir el c´ odigo del programa.
+(4)Salir del modo de inserci´ on con Esc, guardar con :wy salir con :q.
+Sobre el programa Python
+1#!/usr/bin/env python3
+Esta l´ ınea es conocida como shebang y se utiliza en scripts ejecutables en sistemas Unix y Linux. Indica al
+sistema que el script debe ser ejecutado con el int´ erprete d e Python 3. enves utilizado para encontrar el
+int´ erprete de Python en el entorno del usuario, lo que hace q ue el script sea m´ as port´ atil.
+Los comentarios son l´ ıneas en el c´ odigo que no son ejecutad as por el int´ erprete. En Python, los comentarios
+comienzan con #. Este comentario describe el prop´ osito del script:
+5
+6 CAP´ITULO 2. FUNDAMENTOS DE PROGRAMACI ´ON
+1# Este programa imprime "Hola Mundo" en la pantalla.
+1print("Hola Mundo" )
+Esta es la ´ unica l´ ınea de c´ odigo que se ejecuta en el progra ma. La funci´ on print() es una funci´ on incorporada
+en Python que imprime el argumento dado en la pantalla. En est e caso, imprime el string “Hola Mundo”.
+Para ejecutar este programa:
+(1)Haga el script ejecutable con el comando: chmod +x hola mundo.py .
+(2)Ejecute el script con: ./holamundo.py .
+Al ejecutar este programa, se espera que imprima el siguient e mensaje en la terminal:
+1Hola Mundo
+El programa holamundo.py es un ejemplo b´ asico de un programa Python que demuestra la i mpresi´ on de
+texto en la pantalla, sirviendo como una introducci´ on a los conceptos fundamentales de la programaci´ on en
+Python.
+/warning_signEl lector puede bajar este programa desde el siguiente v´ ınc ulo:/desktop
+Pr´ actica 1.
+Es conveniente que el lector pida a ChatGPT otros ejemplos que incluyan comentarios largos al c´ odigo.
+2.2. Tipos de datos y variables
+Python es un lenguaje de programaci´ on de alto nivel que sopo rta una amplia variedad de tipos de datos.
+Entender estos tipos de datos y c´ omo se manejan las variable s es fundamental para la programaci´ on en
+Python.
+A continuaci´ on se presenta una tabla resumen de los tipos de datos en Python:
+Tipo de Dato Descripci´ on Ejemplo
+int N´ umero entero 5
+float N´ umero con coma ﬂotante 5.0
+str Cadena de caracteres "Hola"
+bool Valor booleano (Verdadero o Falso) True
+list Colecci´ on ordenada y modiﬁcable [1, 2, 3]
+tuple Colecci´ on ordenada e inmutable (1, 2, 3)
+set Colecci´ on no ordenada y sin elementos duplicados {1, 2, 3}
+dict Colecci´ on de pares clave-valor {.a": 1, "b": 2 }
+Cuadro 2.1: Resumen de Tipos de Datos en Python
+Los tipos de datos y las variables en Python son fundamentale s para el manejo de la informaci´ on en la
+programaci´ on. Una comprensi´ on clara de estos conceptos e s esencial para cualquier programador de Python.
+Ejemplo 1.
+2.3. OPERADORES Y EXPRESIONES 7
+1#!/usr/bin/env python3
+2
+3# Programa Python para ilustrar diferentes tipos de datos y v ariables
+4
+5# Entero (int)
+6entero = 10
+7print("Entero:" , entero)
+8
+9# Flotante (float)
+10flotante = 10.5
+11print("Flotante:" , flotante)
+12
+13# Cadena de texto (str)
+14cadena = "Hola Mundo"
+15print("Cadena:" , cadena)
+16
+17# Booleano (bool)
+18verdadero = True
+19falso = False
+20print("Booleano Verdadero:" , verdadero, "y Falso:" , falso)
+21
+22# Lista (list)
+23lista = [1, 2, 3, "cuatro" , 5.0]
+24print("Lista:" , lista)
+25
+26# Tupla (tuple)
+27tupla = (1, 2, 3, "cuatro" , 5.0)
+28print("Tupla:" , tupla)
+29
+30# Conjunto (set)
+31conjunto = {1, 2, 3, 4, 5}
+32print("Conjunto:" , conjunto)
+33
+34# Diccionario (dict)
+35diccionario = { "uno": 1,"dos": 2,"tres": 3}
+36print("Diccionario:" , diccionario)
+1chmod +x tipo_datos.py
+2./tipo_datos.py
+3
+4Entero: 10
+5Flotante: 10.5
+6Cadena: Hola Mundo
+7Booleano Verdadero: True y Falso: False
+8Lista: [1, 2, 3, ’cuatro’ , 5.0]
+9Tupla: (1, 2, 3, ’cuatro’ , 5.0)
+10Conjunto: {1, 2, 3, 4, 5}
+11Diccionario: { ’uno’: 1,’dos’: 2,’tres’: 3}
+/warning_signEl lector puede bajar este programa desde el siguiente v´ ınc ulo:/desktop
+Pr´ actica 2.
+Es conveniente que el lector pida a ChatGPT otros ejemplos que incluyan variantes a los resultados de es te
+programa.
+2.3. Operadores y Expresiones
+Estedocumentoproporcionaunadescripci´ ondetalladadel osoperadoresyexpresionesenPython,incluyendo
+su sintaxis y uso com´ un. Python soporta una variedad de oper adores, que pueden ser clasiﬁcados en varios
+tipos como aritm´ eticos, de comparaci´ on, l´ ogicos, entre otros.
+Los operadores aritm´ eticos se utilizan para realizar oper aciones matem´ aticas b´ asicas.
+8 CAP´ITULO 2. FUNDAMENTOS DE PROGRAMACI ´ON
+Operador Descripci´ on Ejemplo
++ Suma a + b
+- Resta a - b
+* Multiplicaci´ on a * b
+/ Divisi´ on a / b
+% M´ odulo a% b
+** Exponente a ** b
+// Divisi´ on entera a // b
+Cuadro 2.2: Resumen de los Operadores Aritm´ eticos en Python
+Se utilizan para comparar valores. El resultado es un boolea no.
+Operador Descripci´ on Ejemplo
+== Igual a a == b
+!= No igual a a != b
+> Mayor que a >b
+< Menor que a <b
+>= Mayor o igual que a >= b
+<= Menor o igual que a <= b
+Cuadro 2.3: Resumen de los Operadores L´ ogicos en Python
+Se usan para combinar declaraciones condicionales.
+Operador Descripci´ on Ejemplo
+and Verdadero si ambos operandos son verdaderos a and b
+or Verdadero si al menos un operando es verdadero a or b
+not Invierte el estado l´ ogico del operando not a
+Cuadro 2.4: Resumen de los Operadores Condicionales en Python
+Ejemplo 2.
+1#!/usr/bin/env python3
+2
+3# Ejemplo de Operadores en Python
+4
+5# Operadores Aritm´ eticos
+6suma = 5 + 3 # Suma
+7resta = 5 - 3 # Resta
+8multiplicacion = 5 * 3 # Multiplicaci´ on
+9division = 10 / 2 # Divisi´ on
+10modulo = 10 % 3 # M´ odulo
+11exponente = 2 ** 3 # Exponente
+12division_entera = 10 // 3 # Divisi´ on Entera
+13
+14# Operadores de Comparaci´ on
+15igual = (5 == 3) # Igual a
+16no_igual = (5 != 3) # No igual a
+17mayor_que = (5 > 3) # Mayor que
+18menor_que = (5 < 3) # Menor que
+19mayor_o_igual = (5 >= 3) # Mayor o igual que
+20menor_o_igual = (5 <= 3) # Menor o igual que
+21
+22# Operadores L´ ogicos
+23y = (True andFalse) # Operador AND
+2.3. OPERADORES Y EXPRESIONES 9
+24o = (True orFalse) # Operador OR
+25no = (notTrue) # Operador NOT
+26
+27# Operadores de Asignaci´ on
+28a = 10
+29a += 5 # Equivalente a a = a + 5
+30a -= 5 # Equivalente a a = a - 5
+31a *= 2 # Equivalente a a = a * 2
+32a /= 2 # Equivalente a a = a / 2
+33
+34# Operadores de Identidad
+35a = [1, 2, 3]
+36b = [1, 2, 3]
+37c = a
+38
+39es_mismo_objeto = (a isc) # True porque a y c son el mismo objeto
+40no_es_mismo_objeto = (a is not b)# True porque a y b no son el mismo objeto
+41
+42# Operadores de Pertenencia
+43lista = [1, 2, 3, 4, 5]
+44contiene = 3 inlista # True porque 3 est´ a en lista
+45no_contiene = 6 not in lista # True porque 6 no est´ a en lista
+46
+47# Imprimir resultados
+48print("Suma:" , suma)
+49print("Resta:" , resta)
+50print("Multiplicaci´ on:" , multiplicacion)
+51print("Divisi´ on:" , division)
+52print("M´ odulo:" , modulo)
+53print("Exponente:" , exponente)
+54print("Divisi´ on Entera:" , division_entera)
+55print("Igual:" , igual)
+56print("No Igual:" , no_igual)
+57print("Mayor Que:" , mayor_que)
+58print("Menor Que:" , menor_que)
+59print("Mayor o Igual Que:" , mayor_o_igual)
+60print("Menor o Igual Que:" , menor_o_igual)
+61print("Operador AND:" , y)
+62print("Operador OR:" , o)
+63print("Operador NOT:" , no)
+64print("Valor de a despu´ es de operaciones de asignaci´ on:" , a)
+65print("Es el mismo objeto:" , es_mismo_objeto)
+66print("No es el mismo objeto:" , no_es_mismo_objeto)
+67print("Contiene 3:" , contiene)
+68print("No contiene 6:" , no_contiene)
+1chmod +x operadores.py
+2./operadores.py
+3
+4Suma: 8
+5Resta: 2
+6Multiplicaci´ on: 15
+7Divisi´ on: 5.0
+8M´ odulo: 1
+9Exponente: 8
+10Divisi´ on Entera: 3
+11Igual: False
+12No Igual: True
+13Mayor Que: True
+14Menor Que: False
+15Mayor o Igual Que: True
+16Menor o Igual Que: False
+17Operador AND: False
+18Operador OR: True
+19Operador NOT: False
+20Valor de a despu´ es de operaciones de asignaci´ on: [1, 2, 3]
+21Es el mismo objeto: True
+22No es el mismo objeto: True
+10 CAP´ITULO 2. FUNDAMENTOS DE PROGRAMACI ´ON
+23Contiene 3: True
+24No contiene 6: True
+/warning_signEl lector puede bajar este programa desde el siguiente v´ ınc ulo:/desktop
+Pr´ actica 3.
+Es conveniente que el lector pida a ChatGPT otros ejemplos que incluyan variantes a este programa.
+2.4. Estructuras de Control
+Las estructuras de control en Python permiten dirigir el ﬂuj o de ejecuci´ on del programa.
+(1)Losbuclespermiten repetir una acci´ on m´ ultiples veces. Python ofre ce principalmente dos tipos: fory
+while.
+(a)El bucleforse utiliza para iterar sobre una secuencia (como una lista, u na tupla, un diccionario,
+un conjunto o una cadena).
+(b)El buclewhilese ejecuta mientras una condici´ on especiﬁcada sea verdade ra.
+(2)Loscondicionales permiten ejecutar diferentes acciones dependiendo de si un a condici´ on es verdadera
+o falsa. Las estructuras condicionales en Python se manejan conif,elif, yelse.
+Ejemplo 3.
+1#!/usr/bin/env python3
+2
+3# Programa Python para demostrar bucles, condicionales
+4
+5# Bucle For
+6print("Ejemplo de Bucle For:" )
+7foriin range (5):
+8print(i, end= ’ ’)
+9print("\n")
+10
+11# Bucle While
+12print("Ejemplo de Bucle While:" )
+13contador = 0
+14whilecontador < 5:
+15 print(contador, end= ’ ’)
+16 contador += 1
+17print("\n")
+18
+19# Condicionales
+20print("Ejemplo de Condicionales:" )
+21numero = 4
+22ifnumero > 5:
+23 print("El n´ umero es mayor que 5" )
+24elifnumero < 5:
+25 print("El n´ umero es menor que 5" )
+26else:
+27 print("El n´ umero es 5" )
+28print("\n")
+1chmod +x estructuras_control.py
+2./estructuras_control.py
+3Ejemplo de Bucle For:
+40 1 2 3 4
+5
+6Ejemplo de Bucle While:
+2.5. FUNCIONES Y M ´ODULOS 11
+70 1 2 3 4
+8
+9Ejemplo de Condicionales:
+10El n´ umero es menor que 5
+/warning_signEl lector puede bajar este programa desde el siguiente v´ ınc ulo:/desktop
+Pr´ actica 4.
+Es conveniente que el lector pida a ChatGPT variantes a este programa.
+2.5. Funciones y M´ odulos
+En Python, las funciones y los m´ odulos son fundamentales pa ra la organizaci´ on y reutilizaci´ on del c´ odigo.
+(1)Deﬁnici´ on y Uso de Funciones
+(a)Unafunci´ onen Python es una agrupaci´ on de declaraciones relacionadas que realizan una tarea
+espec´ ıﬁca.
+(b)Las funciones se deﬁnen usando la palabra clave def, seguida de un nombre de funci´ on, par´ entesis
+y dos puntos.
+(c)Las funciones pueden recibir argumentos y devolver un resul tado.
+(d)Ejemplo:
+1defsumar(a, b):
+2return a + b
+3
+(e)Las funciones permiten reutilizar c´ odigo, mejorar la clar idad y facilitar el mantenimiento.
+Ejemplo 4.
+1# Programa Python para demostrar el uso de funciones
+2
+3# Funci´ on para sumar dos n´ umeros
+4defsumar(a, b):
+5return a + b
+6
+7# Funci´ on para calcular la media de una lista de n´ umeros
+8defcalcular_media(numeros):
+9total = sum(numeros)
+10 cantidad = len(numeros)
+11 return total / cantidad
+12
+13# Usando la funci´ on sumar
+14resultado_suma = sumar(5, 3)
+15print("La suma de 5 y 3 es:" , resultado_suma)
+16
+17# Usando la funci´ on calcular_media
+18lista_numeros = [10, 20, 30, 40, 50]
+19media = calcular_media(lista_numeros)
+20print("La media de" , lista_numeros, "es:", media)
+21\endlstlisting{}
+22
+23\begin{lstlisting}[language=bash]
+24chmod +x funciones.py
+25./funciones.py
+26La suma de 5 y 3 es: 8
+27La media de [10, 20, 30, 40, 50] es: 30.0
+28
+12 CAP´ITULO 2. FUNDAMENTOS DE PROGRAMACI ´ON
+/warning_signEl lector puede bajar este programa desde el siguiente v´ ınc ulo:/desktop
+Pr´ actica 5.
+Es conveniente que el lector pida a ChatGPT variantes a este programa, particularmente a˜ nadiendo dos o mas
+funciones.
+Nota importante: La identaci´ on, o sangr´ ıa, en Python no es solo una cuesti´ o n de estilo, sino una parte
+fundamental de la sintaxis del lenguaje. A continuaci´ on, s e detalla su importancia y c´ omo se utiliza en la
+programaci´ on Python.
+En Python, la identaci´ on se utiliza para delinear bloques d e c´ odigo. Esto es fundamental para la estructura
+del programa. Por ejemplo:
+1foriin range (5):
+2print(i)
+En este bucle for, la l´ ınea print(i) est´ a indentada y forma parte del bucle.
+Python no permite la mezcla de espacios y tabulaciones para l a indentaci´ on. Es crucial mantener la consis-
+tencia. Por ejemplo, si se inicia un bloque con espacios, tod o el bloque debe usar espacios.
+Una identaci´ on incorrecta puede llevar a errores de sintax is en Python, lo que resulta en IndentationError .
+Esto ocurre cuando las l´ ıneas de c´ odigo no est´ an correcta mente alineadas a la misma indentaci´ on.
+Se recomienda usar siempre cuatro espacios para cada nivel d e identaci´ on, que es la convenci´ on en la comu-
+nidad Python.
+2.6. Caso Pr´ actico
+Python soporta varios tipos de datos, como enteros (int), n´ umeros de punto ﬂotante (ﬂoat), cadenas (str),
+y booleanos (bool). Las variables en Python no necesitan ser declaradas y su tipo se inﬁere en tiempo de
+ejecuci´ on.
+1numero = 10 # int
+2decimal = 3.14 # float
+3texto = "Hola Mundo" # str
+4verdadero = True # bool
+5
+6print(numero, decimal, texto, verdadero)
+Los operadores en Python incluyen operadores aritm´ eticos , de comparaci´ on y l´ ogicos. Las expresiones usan
+estos operadores para evaluar valores o realizar c´ alculos .
+1suma = 5 + 3 # Aritm´ etico
+2igual = (5 == 3) # Comparaci´ on
+3y = (True andFalse) # L´ ogico
+4
+5print(suma, igual, y)
+Python utiliza estructuras de control como bucles y condici onales para dirigir el ﬂujo de ejecuci´ on del
+programa. Ejemplo:
+1# Bucle For
+2foriin range (5):
+3print(i)
+4
+5# Condicional If
+6numero = 4
+7ifnumero > 5:
+8print("Mayor que 5" )
+9elifnumero < 5:
+10 print("Menor que 5" )
+11else:
+12 print("El n´ umero es 5" )
+2.6. CASO PR ´ACTICO 13
+Las funciones en Python son bloques de c´ odigo reutilizable s que realizan una tarea espec´ ıﬁca.
+1# Definici´ on de una funci´ on
+2defsumar(a, b):
+3return a + b
+4
+5# Uso de la funci´ on
+6resultado = sumar(5, 3)
+7print("La suma de 5 y 3 es:" , resultado)
+/warning_signEl lector puede bajar estos programas desde el siguiente v´ ı nculo:/desktop
+Pr´ actica 6.
+Es conveniente que el lector ejecute cada uno de estos progra mas.
+14 CAP´ITULO 2. FUNDAMENTOS DE PROGRAMACI ´ON
+Cap´ ıtulo 3
+Listas
+Las listas en Python son una de las estructuras de datos m´ as v ers´ atiles y com´ unmente utilizadas. Son
+colecciones ordenadas y mutables, lo que signiﬁca que los el ementos dentro de una lista pueden ser cambiados
+despu´ es de su creaci´ on. Esto las distingue de las tuplas, q ue son colecciones inmutables. Las listas en Python
+se pueden identiﬁcar por estar encerradas entre corchetes []y pueden contener elementos de diferentes tipos,
+incluyendo n´ umeros, cadenas y otras listas.
+El uso de las listas en Python es muy extenso. Algunos ejemplo s comunes incluyen el almacenamiento de
+series de datos, la realizaci´ on de operaciones de secuenci a como iteraciones, y la manipulaci´ on de elementos a
+trav´ es de m´ etodos como append() ,remove() ,sort(), entre otros. La habilidad de las listas para almacenar
+diferentes tipos de datos hace que sean particularmente ´ ut iles en una variedad de aplicaciones pr´ acticas en
+programaci´ on.
+Las principales ventajas de usar listas en Python son:
+(1)Flexibilidad : Las listas pueden contener elementos de diferentes tipos, incluyendo otras listas, lo que
+las hace extremadamente ﬂexibles.
+(2)Mutabilidad :Loselementosdeunalistapuedenmodiﬁcarse,loquepermit eunamanipulaci´ ondin´ ami-
+ca de los datos.
+(3)M´ etodos Integrados : Python proporciona una amplia gama de m´ etodos integrados para realizar
+operaciones comunes en listas, como a˜ nadir, eliminar y ord enar elementos.
+(4)Slice y Acceso por ´Indice: Las listas permiten el acceso y modiﬁcaci´ on de elementos e spec´ ıﬁcos
+mediante´ ındices, lo que facilita la gesti´ on de subconjun tos de datos.
+(5)Iterabilidad :Laslistassoniterables,loquesigniﬁcaquepuedenserusa dasenbuclesycomprehensions
+de listas para operaciones repetitivas y eﬁcientes.
+Las listas son una herramienta poderosa y ﬂexible en Python, adecuadas para una amplia gama de aplica-
+ciones en programaci´ on. Su facilidad de uso y la amplia gama de funcionalidades que ofrecen las hacen una
+opci´ on popular entre los desarrolladores.
+3.1. Listas Unidimensionales en Python
+En Python, un lista unidimensional se reﬁere a una secuencia lineal de elementos. Aunque Python no tiene
+un tipo de datos espec´ ıﬁco para listas, la funcionalidad de los listas se logra a trav´ es del tipo de datos list.
+Una lista en Python es una colecci´ on ordenada y mutable que s e puede utilizar para almacenar una serie de
+elementos.
+Para crear un lista unidimensional en Python, se declaran lo s elementos dentro de corchetes []separados
+por comas. Por ejemplo:
+15
+16 CAP´ITULO 3. LISTAS
+1miLista = [10, 20, 30, 40, 50]
+Esta l´ ınea de c´ odigo crea un lista unidimensional llamado miLista que contiene cinco enteros.
+Los listas unidimensionales en Python tienen las siguiente s caracter´ ısticas:
+(1)Ordenados : Los elementos en un lista mantienen el orden en que se a˜ nade n.
+(2)Accesibles por ´Indice: Cada elemento en el lista se puede acceder mediante un´ ındi ce. Por ejemplo,
+miLista[0] devuelve el primer elemento.
+(3)Mutables : Los valores almacenados en el lista pueden modiﬁcarse.
+(4)Heterog´ eneos : Unlistapuedecontenerelementosdediferentestipos,com oenteros,cadenasyobjetos.
+Las operaciones b´ asicas que se pueden realizar en listas un idimensionales incluyen:
+(1)Acceso a elementos : Usando´ ındices para obtener el valor de un elemento espec´ ıﬁco.
+(2)Modiﬁcaci´ on de elementos : Cambiar el valor de uno o m´ as elementos.
+(3)Adici´ on de elementos : Utilizar m´ etodos como append() oinsert() para a˜ nadir elementos.
+(4)Eliminaci´ on de elementos : Utilizar m´ etodos como remove() opop()para eliminar elementos.
+Aqu´ ı se muestra un ejemplo simple que ilustra la creaci´ on y manipulaci´ on de un lista unidimensional en
+Python:
+1# Creaci´ on del lista
+2miLista = [10, 20, 30, 40, 50]
+3
+4# Acceso a elementos
+5print(miLista[0]) # Salida: 10
+6print(miLista[3]) # Salida: 40
+7
+8# Modificaci´ on de elementos
+9miLista[2] = 35
+10print(miLista) # Salida: [10, 20, 35, 40, 50]
+11
+12# Adici´ on de elementos
+13miLista.append(60)
+14print(miLista) # Salida: [10, 20, 35, 40, 50, 60]
+15
+16# Eliminaci´ on de elementos
+17miLista.remove(20)
+18print(miLista) # Salida: [10, 35, 40, 50, 60]
+3.2. Listas Bidimensionales en Python
+Una lista bidimensional en Python es una lista de listas. Cad a elemento de la lista principal puede ser otra
+lista que contiene m´ ultiples elementos.
+(1)´Indices Positivos: Se accede a los elementos utilizando dos ´ ındices:[i][j], dondeies el´ ındice de la
+sublista, y jes el´ ındice del elemento dentro de esa sublista.
+(2)´Indices Negativos: Funcionan similar a los´ ındices positi vos, pero comienzan desde el ﬁnal.
+3.3. LISTAS TRIDIMENSIONALES EN PYTHON 17
+1# A~ nadir un elemento
+2matriz[0].append(10)
+3# Borrar un elemento
+4delmatriz[1][2]
+1# Imprimir toda la lista
+2print(matriz)
+3# Imprimir elementos espec´ ıficos
+4print(matriz[0][0], matriz[1][1])
+1matriz = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+2# Acceso al primer elemento de la primera sublista
+3print(matriz[0][0]) # Salida: 1
+4# Acceso al ´ ultimo elemento de la ´ ultima sublista
+5print(matriz[-1][-1]) # Salida: 9
+3.3. Listas Tridimensionales en Python
+Una lista tridimensional es una lista de listas de listas. Se puede pensar como un cubo, donde cada elemento
+es accesible mediante tres´ ındices.
+Similar a las listas bidimensionales, pero con un´ ındice ad icional.
+A˜ nadir y Borrar Elementos.
+1# A~ nadir un subgrupo
+2cubo[0].append([9, 10])
+3# Borrar un subgrupo
+4delcubo[1][1]
+1# Imprimir toda la lista
+2print(cubo)
+3# Imprimir elementos espec´ ıficos
+4print(cubo[0][0][0], cubo[1][0][1])
+1cubo = [[[1, 2], [3, 4]], [[5, 6], [7, 8]]]
+2# Acceso al primer elemento del primer subgrupo de la primera sublista
+3print(cubo[0][0][0]) # Salida: 1
+4# Acceso al ´ ultimo elemento del ´ ultimo subgrupo de la ´ ulti ma sublista
+5print(cubo[-1][-1][-1]) # Salida: 8
+3.4. Caso Pr´ actico
+El siguiente programa es un sistema de gesti´ on de inventari o para una tienda de electr´ onica. Utiliza listas
+bidimensionales para almacenar informaci´ on sobre los pro ductos y listas unidimensionales para operaciones
+espec´ ıﬁcas.
+1#!/usr/bin/env python3
+2
+3# Suponemos que inventario es una lista de tuplas (nombre, ca ntidad)
+4inventario = []
+5
+6defanadir_inventario():
+7print("\nA~ nadir elemento al inventario" )
+8print("Ejemplo: Para a~ nadir un producto, ingresa el nombre y la ca ntidad." )
+9print("Formato del ejemplo: ’Nombre del producto, Cantidad’" )
+10 print("Por ejemplo: ’L´ apices, 20’" )
+11
+12 entrada_usuario = input("Ingrese el nombre y la cantidad del producto separados por u na
+coma: " )
+13 try:
+14 nombre, cantidad = entrada_usuario.split( ’,’)
+15 cantidad = int(cantidad.strip()) # Convierte la cantidad a entero
+18 CAP´ITULO 3. LISTAS
+16 inventario.append((nombre.strip(), cantidad))
+17 print(f"Producto ’{nombre.strip()}’ con cantidad {cantidad} a~ n adido al inventario." )
+18 except ValueError:
+19 print("Formato incorrecto. Por favor, siga el ejemplo." )
+20
+21defborrar_inventario():
+22 print("\nBorrar elemento del inventario" )
+23 listar_inventario()
+24 ifinventario:
+25 try:
+26 item_id = int(input("Ingrese el ID del producto a borrar: " ))
+27 if0 <= item_id < len(inventario):
+28 elemento_borrado = inventario.pop(item_id)
+29 print(f"Producto eliminado: {elemento_borrado}" )
+30 else:
+31 print("ID no v´ alido." )
+32 except ValueError:
+33 print("Por favor, ingrese un n´ umero v´ alido." )
+34
+35deflistar_inventario():
+36 print("\nListar elementos del inventario" )
+37 foridx, item in enumerate (inventario):
+38 print(f"{idx}: {item}" )
+39 if not inventario:
+40 print("El inventario est´ a vac´ ıo." )
+41
+42defmostrar_menu():
+43 whileTrue:
+44 print("\nMen´ u de Inventario" )
+45 print("1. A~ nadir al inventario" )
+46 print("2. Borrar del inventario" )
+47 print("3. Listar inventario" )
+48 print("4. Salir" )
+49
+50 opcion = input("Seleccione una opci´ on: " )
+51
+52 ifopcion == ’1’:
+53 anadir_inventario()
+54 elifopcion == ’2’:
+55 borrar_inventario()
+56 elifopcion == ’3’:
+57 listar_inventario()
+58 elifopcion == ’4’:
+59 print("Saliendo del programa." )
+60 break
+61 else:
+62 print("Opci´ on no v´ alida, intente de nuevo." )
+63
+64# Llamada a la funci´ on para mostrar el men´ u
+65mostrar_menu()
+/warning_signEl lector puede bajar este programa desde el siguiente v´ ınc ulo:/desktop
+Pr´ actica 7.
+Es conveniente que el lector ensaye este programa y en su caso lo modiﬁque para dominarlo.
+Cap´ ıtulo 4
+Bibliotecas Cient´ ıﬁcas
+En esta secci´ on, nos enfocaremos en la instalaci´ on de bibl iotecas esenciales para la inteligencia artiﬁcial y
+la ciencia de datos en Fedora 39. Este sistema operativo, con ocido por su estabilidad y su impulso hacia la
+innovaci´ on, es ideal para desarrolladores y aﬁcionados a l a IA. Cubriremos bibliotecas clave como PyTorch,
+Scikit-learn ,Keraspara el dise˜ no de redes neuronales, NumPypara operaciones matem´ aticas avanzadas,
+la biblioteca Mathde Python para c´ alculos esenciales, y Pandaspara la manipulaci´ on y an´ alisis de datos.
+Proporcionaremos instrucciones detalladas para una insta laci´ on exitosa y consejos para optimizar el rendi-
+miento de estas bibliotecas en Fedora 39, asegurando que los usuarios puedan aprovechar al m´ aximo sus
+capacidades en este entorno de desarrollo din´ amico.
+4.1. Biblioteca NumPypara C´ alculo Num´ erico
+NumPy, una abreviatura de “Numerical Python”, es una biblioteca f undamental en el ecosistema de Python,
+especialmente en los campos de la ciencia de datos, la ingeni er´ ıa y la investigaci´ on cient´ ıﬁca. Este pre´ ambulo
+pretende ilustrar las m´ ultiples ventajas que hacen de NumPyuna herramienta indispensable para los profe-
+sionales y entusiastas de estas ´ areas. Entre sus principal es beneﬁcios, destacan su eﬁciencia en el manejo y
+operaci´ on de grandes conjuntos de datos, gracias a su estru ctura interna optimizada que permite realizar
+c´ alculos num´ ericos de alta velocidad. Adem´ as, NumPyofrece una extensa biblioteca de funciones matem´ aticas
+que facilitan desde operaciones b´ asicas hasta c´ alculos c omplejos, soportando una amplia gama de aplicacio-
+nes en diferentes disciplinas. Su compatibilidad e integra ci´ on con otras bibliotecas importantes de Python,
+comoPandas,Matplotlib ySciPy, ampl´ ıan a´ un m´ as su utilidad, convirti´ endola en una bas e para el an´ alisis
+y la visualizaci´ on de datos. En este pre´ ambulo, explorare mos estas ventajas en detalle, proporcionando una
+comprensi´ on clara de por qu´ e NumPyes tan valorado en la comunidad cient´ ıﬁca y tecnol´ ogica.
+La instalaci´ on de la biblioteca NumPysupone la ejecuci´ on de los siguientes comandos:
+1# Actualizar el sistema
+2sudo dnf update -y
+3
+4# Instalar Pip para Python 3
+5sudo dnf install python3-pip -y
+6
+7# Instalar NumPy usando Pip
+8pip3 install numpy
+4.2. Principales Funciones de NumPy
+NumPyes una biblioteca esencial en Python para la ciencia de datos y la computaci´ on cient´ ıﬁca, proporcio-
+nando una amplia gama de funciones. Algunas de sus funciones clave incluyen:
+Funci´ on Descripci´ on
+19
+20 CAP´ITULO 4. BIBLIOTECAS CIENT ´IFICAS
+numpy.array Crea un array N-dimensional.
+numpy.zeros Genera un array lleno de ceros.
+numpy.ones Crea un array lleno de unos.
+numpy.empty Crea un array sin inicializar.
+numpy.arange Genera valores espaciados uniformemente en un intervalo.
+numpy.linspace Crea un array de valores linealmente espaciados.
+numpy.reshape Cambia la forma de un array.
+numpy.ravel Aplana un array a una dimensi´ on.
+numpy.transpose Transpone un array.
+Operaciones b´ asicas (+, -, *, /) Realiza c´ alculos elementales en arrays.
+numpy.dot Realiza el producto punto entre arrays.
+Funciones universales ( ufunc)Aplica funciones matem´ aticas a cada elemento del array (p. ej.
+sin,cos).
+numpy.linalg.inv Calcula la inversa de una matriz.
+numpy.linalg.eig Encuentra los valores y vectores propios de una matriz.
+numpy.linalg.svd Realiza la descomposici´ on en valores singulares.
+numpy.mean Calcula la media de los elementos de un array.
+numpy.median Encuentra la mediana de un array.
+numpy.std Calcula la desviaci´ on est´ andar de un array.
+numpy.var Encuentra la varianza de un array.
+numpy.corrcoef Calcula los coeﬁcientes de correlaci´ on.
+numpy.random.rand Genera n´ umeros aleatorios en un array.
+numpy.random.randint Retorna enteros aleatorios de un rango.
+numpy.loadtxt Carga datos desde un archivo de texto.
+numpy.savetxt Guarda un array a un archivo de texto.
+Cuadro 4.1: Principales funciones de la biblioteca NumPy.
+Nota importante: Para m´ as informaci´ on, documentaci´ on detallada y tutori ales sobre NumPy, visite el sitio
+web oﬁcial: https://numpy.org/.
+Ejemplo 7.
+1#!/usr/bin/env python3
+2
+3import numpy as np
+4
+5# Crear un array 2D de n´ umeros aleatorios
+6array_2d = np.random.rand(5, 5)
+7
+8# Realizar operaciones matem´ aticas elementales
+9array_cuadrado = np.square(array_2d)
+10array_raiz = np.sqrt(array_2d)
+11
+12# Crear un array 1D y redimensionarlo a 2D
+13array_1d = np.arange(25)
+14array_1d_reshape = array_1d.reshape(5, 5)
+15
+16# Multiplicaci´ on de matrices
+17multiplicacion_matrices = np.dot(array_2d, array_1d_re shape)
+18
+19# Encontrar valores m´ aximos, m´ ınimos y la media
+20maximo = np. max(array_2d)
+21minimo = np. min(array_2d)
+22media = np.mean(array_2d)
+23
+24# Aplicar una funci´ on a todos los elementos
+25funcion_aplicada = np.sin(array_2d) + np.cos(array_2d)
+26
+4.2. PRINCIPALES FUNCIONES DE NUMPY 21
+27print("Array 2D original:\n" , array_2d)
+28print("\nArray 2D al cuadrado:\n" , array_cuadrado)
+29print("\nRa´ ız cuadrada del array 2D:\n" , array_raiz)
+30print("\nArray 1D redimensionado a 2D:\n" , array_1d_reshape)
+31print("\nResultado de la multiplicaci´ on de matrices:\n" , multiplicacion_matrices)
+32print("\nM´ aximo, m´ ınimo y media del array 2D:" , maximo, minimo, media)
+33print("\nArray 2D despu´ es de aplicar la funci´ on sin + cos:\n" , funcion_aplicada)
+Nota importante: Elcomandoesunalias,establece npcomounnombrealternativoparareferirseaNumPy
+en el c´ odigo. Esto se hace por conveniencia y para mantener e l c´ odigo m´ as conciso. Por lo tanto, en lugar
+de escribir numpy.funcion() para cada llamada a una funci´ on de NumPy, simplemente se pue de escribir
+np.funcion() .
+1./calculo_numerico.py
+2Array 2D original:
+3[[0.38184212 0.37133481 0.14481153 0.10695061 0.0782469 7]
+4[0.24553256 0.92266654 0.47578315 0.53080238 0.25459659 ]
+5[0.48950207 0.72646162 0.79469694 0.5267596 0.9123638 ]
+6[0.17367246 0.4101474 0.34811659 0.3809394 0.11953068]
+7[0.68360381 0.46146527 0.57394428 0.02992457 0.01870444 ]]
+8
+9Array 2D al cuadrado:
+10[[1.45803406e-01 1.37889541e-01 2.09703778e-02 1.14384 324e-02
+116.12258870e-03]
+12[6.02862391e-02 8.51313535e-01 2.26369601e-01 2.817511 69e-01
+136.48194259e-02]
+14[2.39612274e-01 5.27746491e-01 6.31543233e-01 2.774756 78e-01
+158.32407710e-01]
+16[3.01621223e-02 1.68220886e-01 1.21185161e-01 1.451148 23e-01
+171.42875840e-02]
+18[4.67314174e-01 2.12950195e-01 3.29412031e-01 8.954800 50e-04
+193.49856039e-04]]
+20
+21Ra´ ız cuadrada del array 2D:
+22[[0.61793375 0.60937247 0.3805411 0.32703304 0.2797266 ]
+23[0.49551242 0.96055533 0.68977036 0.72856186 0.50457566 ]
+24[0.69964424 0.85232718 0.89145776 0.72578206 0.95517737 ]
+25[0.41674028 0.64042751 0.59001406 0.61720288 0.3457321 ]
+26[0.82680337 0.67931235 0.7575911 0.1729872 0.13676417]]
+27
+28Array 1D redimensionado a 2D:
+29[[ 0 1 2 3 4]
+30[ 5 6 7 8 9]
+31[10 11 12 13 14]
+32[15 16 17 18 19]
+33[20 21 22 23 24]]
+34
+35Resultado de la multiplicaci´ on de matrices:
+36[[ 6.47398786 7.5571739 8.64035994 9.72354597 10.8067320 1]
+37[22.42513176 24.85451297 27.28389419 29.71327541 32.142 65663]
+38[37.72794766 41.1777317 44.62751574 48.07729979 51.5270 8383]
+39[13.63660747 15.06901399 16.50142051 17.93382703 19.366 23355]
+40[ 8.86972647 10.63736884 12.40501121 14.17265359 15.9402 9596]]
+41
+42M´ aximo, m´ ınimo y media del array 2D: 0.9226665352902551 0 .018704439014055607
+0.4064960075910038
+43
+44Array 2D despu´ es de aplicar la funci´ on sin + cos:
+45[[1.30061033 1.29470342 1.13383905 1.10103307 1.0751074 2]
+46[1.21308096 1.40091074 1.34696904 1.36862664 1.21962 ]
+47[1.35275358 1.41175813 1.41415242 1.36717552 1.40283011 ]
+48[1.15775752 1.31580656 1.28114484 1.30010847 1.11211096 ]
+49[1.40689278 1.34066162 1.38271451 1.0294724 1.01852843] ]
+Este programa realiza las siguientes operaciones con NumPy:
+(1)Creaci´ on de un array 2D con n´ umeros aleatorios.
+22 CAP´ITULO 4. BIBLIOTECAS CIENT ´IFICAS
+(2)Aplicaci´ on de operaciones matem´ aticas elementales como el cuadrado y la ra´ ız cuadrada.
+(3)Redimensionamiento de un array 1D a un array 2D.
+(4)Realizaci´ on de la multiplicaci´ on de matrices.
+(5)C´ alculo de valores m´ aximos, m´ ınimos y la media del array.
+(6)Aplicaci´ on de funciones trigonom´ etricas a todos los elem entos del array.
+/warning_signEl lector puede bajar este programa desde el siguiente v´ ınc ulo:/desktop
+Pr´ actica 8.
+Es conveniente que el lector pida a ChatGPT ejemplos de uso de cada una de las funciones en (Secci´ on 4.2),
+y los compile y ejecute individualmente como en (Ejemplo 7).
+Ejemplo 8.
+1#!/usr/bin/env python3
+2import numpy as np
+3# Crear una matriz cuadrada
+4A = np.array([[1, 2], [3, 4]])
+5
+6# Calcular la inversa de la matriz
+7A_inv = np.linalg.inv(A)
+8
+9print("Matriz Original:\n" , A)
+10print("Inversa de la Matriz:\n" , A_inv)
+11
+1chmod +x uso_comando.py
+2./uso_comando.py
+3Matriz Original:
+4[[1 2]
+5[3 4]]
+6Inversa de la Matriz:
+7[[-2. 1. ]
+8[ 1.5 -0.5]]
+9
+4.3. Biblioteca Pandaspara Manipulaci´ on de Datos
+Pandases una biblioteca de software escrita como extensi´ on de NumPypara manipulaci´ on y an´ alisis de datos
+en Python. Ofrece estructuras de datos y operaciones para ma nipular tablas num´ ericas y series temporales,
+siendo una herramienta indispensable en el an´ alisis de dat os. Entre sus principales ventajas, destacamos:
+(1)Facilidad de Uso: Pandas simpliﬁca el proceso de carga, manipulaci´ on y an´ al isis de datos con su
+poderosa estructura de datos DataFrame.
+(2)Alto Rendimiento: Para operaciones de datos de gran tama˜ no, Pandas est´ a opti mizado con t´ ecnicas
+de rendimiento cr´ ıtico.
+(3)Integraci´ on con Otras Herramientas: Se integra perfectamente con otras bibliotecas utilizadas en
+la ciencia de datos como NumPy, SciPy, y Matplotlib.
+4.4. PRINCIPALES FUNCIONES DE PANDAS 23
+(4)Funcionalidad Vers´ atil: Incluye funciones para leer y escribir datos entre diferent es formatos, ma-
+nipulaci´ on de datos faltantes, agrupaci´ on y remuestreo d e datos, entre otros.
+(5)Amplio Uso en la Industria: Es ampliamente utilizada en el ´ ambito acad´ emico y comerci al, lo que
+garantiza un continuo desarrollo y mantenimiento.
+Estas caracter´ ısticas hacen de Pandasuna herramienta esencial para cualquier cient´ ıﬁco de dato s o analista
+que trabaje con Python.
+La instalaci´ on de la biblioteca Pandassupone la ejecuci´ on de los siguientes comandos:
+1# Actualizar el sistema
+2sudo dnf update -y
+3
+4# Instalar Pip para Python 3
+5sudo dnf install python3-pip -y
+6
+7# Instalar NumPy usando Pip
+8pip3 install pandas
+Nota importante: De haber instalado la biblioteca NumPylos primeros dos pasos de este procedimiento no
+es necesario ejecutarlos.
+4.4. Principales Funciones de Pandas
+A continuaci´ on se presenta una tabla con algunas de las prin cipales funciones de Pandas organizadas por
+categor´ ıas:
+Categor´ ıa Funciones
+Creaci´ on de DataFramespandas.DataFrame() , pandas.read csv(),
+pandas.read excel(),pandas.read json()
+Manipulaci´ on de DatosDataFrame.head() ,DataFrame.tail() ,DataFrame.drop() ,
+DataFrame.rename()
+Selecci´ on y Filtrado DataFrame.loc[] ,DataFrame.iloc[] ,DataFrame.query()
+Operaciones con DatosDataFrame.groupby() , DataFrame.merge() ,
+DataFrame.join() ,DataFrame.concat()
+Funciones Estad´ ısticasDataFrame.describe() , DataFrame.mean() ,
+DataFrame.median() ,DataFrame.std()
+Manejo de Datos FaltantesDataFrame.dropna() , DataFrame.fillna() ,
+DataFrame.isna()
+Conversi´ on y Exportaci´ onDataFrame.to csv(), DataFrame.to excel(),
+DataFrame.to json()
+Cuadro 4.2: Principales funciones de la biblioteca Pandas.
+Ejemplo 8.
+1#!/usr/bin/env python3
+2
+3import pandas as pd
+4
+5# Creaci´ on de un DataFrame a partir de un diccionario
+6data = { ’Name’: [’Alice’ ,’Bob’,’Charlie’ ],
+7 ’Age’: [25, 30, 35],
+8 ’City’: [’New York’ ,’Los Angeles’ ,’Chicago’ ]}
+9df = pd.DataFrame(data)
+10
+11# Mostrar las primeras filas del DataFrame
+24 CAP´ITULO 4. BIBLIOTECAS CIENT ´IFICAS
+12print("Primeras filas del DataFrame:" )
+13print(df.head())
+14
+15# Manipulaci´ on de datos: a~ nadir una nueva columna
+16df[’Salary’ ] = [70000, 80000, 90000]
+17print("\nDataFrame despu´ es de a~ nadir la columna ’Salary’:" )
+18print(df)
+19
+20# Selecci´ on y filtrado: seleccionar filas basadas en una co ndici´ on
+21filtered_df = df[df[ ’Age’] > 28]
+22print("\nFilas donde la edad es mayor que 28:" )
+23print(filtered_df)
+24
+25# Operaciones con datos: calcular la media de una columna
+26average_age = df[ ’Age’].mean()
+27print("\nEdad media de las personas en el DataFrame:" , average_age)
+28
+29# Funciones estad´ ısticas: descripci´ on estad´ ıstica del DataFrame
+30print("\nDescripci´ on estad´ ıstica del DataFrame:" )
+31print(df.describe())
+32
+33# Manejo de datos faltantes: a~ nadir filas con datos faltant es y manejarlos
+34df.loc[3] = [ ’David’ , None, ’Miami’ , 85000]
+35print("\nDataFrame con una fila con datos faltantes:" )
+36print(df)
+37df.fillna({ ’Age’: df[’Age’].mean()}, inplace=True)
+38print("\nDataFrame despu´ es de manejar los datos faltantes en ’Ag e’:")
+39print(df)
+40
+41# Conversi´ on y exportaci´ on: convertir el DataFrame a CSV
+42df.to_csv( ’data.csv’ , index=False)
+43print("\nDataFrame guardado como ’data.csv’." )
+44
+45# Lectura de datos: cargar un DataFrame desde un archivo CSV
+46loaded_df = pd.read_csv( ’data.csv’ )
+47print("\nDataFrame cargado desde ’data.csv’:" )
+48print(loaded_df)
+1Primeras filas del DataFrame:
+2 Name Age City
+30 Alice 25 New York
+41 Bob 30 Los Angeles
+52 Charlie 35 Chicago
+6
+7DataFrame despu´ es de a~ nadir la columna ’Salary’ :
+8 Name Age City Salary
+90 Alice 25 New York 70000
+101 Bob 30 Los Angeles 80000
+112 Charlie 35 Chicago 90000
+12
+13Filas donde la edad es mayor que 28:
+14 Name Age City Salary
+151 Bob 30 Los Angeles 80000
+162 Charlie 35 Chicago 90000
+17
+18Edad media de las personas en el DataFrame: 30.0
+19
+20Descripci´ on estad´ ıstica del DataFrame:
+21 Age Salary
+22count 3.0 3.0
+23mean 30.0 80000.0
+24std 5.0 10000.0
+25min 25.0 70000.0
+2625% 27.5 75000.0
+2750% 30.0 80000.0
+2875% 32.5 85000.0
+29max 35.0 90000.0
+30
+4.5. VISUALIZACI ´ON CON MATPLOTLIB 25
+31DataFrame con una fila con datos faltantes:
+32 Name Age City Salary
+330 Alice 25 New York 70000
+341 Bob 30 Los Angeles 80000
+352 Charlie 35 Chicago 90000
+363 David None Miami 85000
+37
+38DataFrame despu´ es de manejar los datos faltantes en ’Age’:
+39 Name Age City Salary
+400 Alice 25.0 New York 70000
+411 Bob 30.0 Los Angeles 80000
+422 Charlie 35.0 Chicago 90000
+433 David 30.0 Miami 85000
+44
+45DataFrame guardado como ’data.csv’ .
+46
+47DataFrame cargado desde ’data.csv’ :
+48 Name Age City Salary
+490 Alice 25.0 New York 70000
+501 Bob 30.0 Los Angeles 80000
+512 Charlie 35.0 Chicago 90000
+523 David 30.0 Miami 85000
+53
+Este programa realiza las siguientes operaciones con Panda s:
+(1)Creaci´ on de un DataFrame a partir de un diccionario.
+(2)Mostrar las primeras ﬁlas del DataFrame .
+(3)Manipulaci´ on de datos a˜ nadiendo una nueva columna.
+(4)Selecci´ on y ﬁltrado basado en condiciones.
+(5)C´ alculo de la media de una columna.
+(6)Obtenci´ on de una descripci´ on estad´ ıstica del DataFrame .
+(7)Manejo de datos faltantes.
+(8)Exportaci´ on del DataFrame a un archivo CSV.
+(9)Carga de un DataFrame desde un archivo CSV.
+/warning_signEl lector puede bajar este programa desde el siguiente v´ ınc ulo:/desktop
+Pr´ actica 9.
+Es conveniente que el lector pida a ChatGPT ejemplos de uso de cada una de las funciones en (Secci´ on 4.4),
+y los compile y ejecute individualmente.
+4.5. Visualizaci´ on con Matplotlib
+Matplotlib es una biblioteca de gr´ aﬁcos para el lenguaje de programaci ´ on Python y su extensi´ on num´ erica
+matem´ atica NumPy. Fue creada originalmente por John D. Hunter en 2003 [ 1] y se ha convertido en una
+herramienta esencial para la visualizaci´ on de datos en Pyt hon. Proporciona una interfaz orientada a objetos
+para integrar gr´ aﬁcos en aplicaciones con diversos kits de herramientas de interfaz de usuario.
+26 CAP´ITULO 4. BIBLIOTECAS CIENT ´IFICAS
+4.6. Ventajas de Matplotlib
+Numerosas son las ventajas de usar esta biblioteca, entre la s que se destacan su facilidad de uso y compati-
+bilidad con bibliotecas.
+(1)Facilidad de Uso :Matplotlib es conocida por su simplicidad, permitiendo a los usuarios c rear
+gr´ aﬁcos de alta calidad de manera r´ apida y eﬁciente.
+(2)Personalizaci´ on : Ofrece amplias opciones de personalizaci´ on, permitiend o ajustar casi todos los as-
+pectos de los gr´ aﬁcos.
+(3)Variedad de Gr´ aﬁcos : Soporta una amplia gama de tipos de gr´ aﬁcos, adecuada para diversas apli-
+caciones y campos.
+(4)Compatibilidad con NumPyyPandas: Se integra perfectamente con NumPyyPandas, facilitando la
+visualizaci´ on de datos complejos y el an´ alisis estad´ ıst ico.
+(5)Gr´ aﬁcos Interactivos y Animaciones : Admite la creaci´ on de visualizaciones interactivas y ani ma-
+ciones, ampliando su funcionalidad.
+(6)Exportaci´ on en M´ ultiples Formatos : Permite exportar gr´ aﬁcos en diversos formatos, facilita ndo
+su inclusi´ on en publicaciones o presentaciones.
+(7)Comunidad y Documentaci´ on : Cuenta con una amplia comunidad y una extensa documentaci´ on,
+proporcionando un gran soporte para los usuarios.
+4.7. Tabla de Funciones de Matplotlib
+Funci´ on Descripci´ on Ejemplo de Uso
+plot Gr´ aﬁco de l´ ıneas o marcadores. plt.plot(x, y)
+scatter Gr´ aﬁco de dispersi´ on. plt.scatter(x, y)
+bar Gr´ aﬁco de barras. plt.bar(x, y)
+hist Histograma. plt.hist(data)
+imshow Mostrar im´ agenes. plt.imshow(image)
+subplot Crear subgr´ aﬁcos. plt.subplot(1, 2, 1)
+xlabel Etiqueta del eje X. plt.xlabel(’Eje X’)
+ylabel Etiqueta del eje Y. plt.ylabel(’Eje Y’)
+title T´ ıtulo del gr´ aﬁco. plt.title(’T´ ıtulo’)
+legend A˜ nadir leyenda. plt.legend()
+show Mostrar el gr´ aﬁco. plt.show()
+Cuadro 4.3: Resumen de las Funciones Principales de Matplotlib .
+Ejemplo 9.
+1#!/usr/bin/env python3
+2import matplotlib.pyplot as plt
+3import numpy as np
+4
+5# Crear los valores para el eje x
+6x = np.linspace(-np.pi, np.pi, 300)
+7
+8# Calcular los valores de la funci´ on seno para cada punto en x
+9y = np.sin(x)
+4.7. TABLA DE FUNCIONES DE MATPLOTLIB 27
+−3 −2 −1 0 1 2 3
+x−1.00−0.75−0.50−0.250.000.250.500.751.00sin(x)F unción Seno
+Figura 4.1: Gr´ aﬁco de la funci´ on sin xa partir de Matplotlib .
+10
+11# Crear el gr´ afico
+12plt.plot(x, y)
+13
+14# Agregar t´ ıtulo y etiquetas
+15plt.title( "Funci´ on Seno" )
+16plt.xlabel( "x")
+17plt.ylabel( "sin(x)" )
+18
+19# Guardar el gr´ afico en formato EPS
+20plt.savefig( "seno1.eps" )
+1chmod +x seno.py
+2./seno.py
+/warning_signEl lector puede bajar este programa desde el siguiente v´ ınc ulo:/desktop
+1#!/usr/bin/env python3
+2import matplotlib.pyplot as plt
+3frommpl_toolkits.mplot3d import Axes3D
+4import numpy as np
+5
+6# Crear una malla de puntos en el espacio x-y
+7x = np.linspace(-5, 5, 100)
+8y = np.linspace(-5, 5, 100)
+9x, y = np.meshgrid(x, y)
+10
+11# Calcular z = x^2 + y^2
+12z = x**2 + y**2
+13
+14# Crear una figura y un eje 3D
+15fig = plt.figure()
+16ax = fig.add_subplot(111, projection= ’3d’)
+17
+18# Dibujar la superficie
+19ax.plot_surface(x, y, z, cmap= ’viridis’ )
+20
+28 CAP´ITULO 4. BIBLIOTECAS CIENT ´IFICAS
+−4
+−2
+0
+2
+4Eje X−4−2024
+Eje Y1020304050
+Eje ZGráfico de x^2 + y^2
+Figura 4.2: Gr´ aﬁco de la funci´ on x2+y2a partir de Matplotlib .
+21# Agregar t´ ıtulos y etiquetas
+22ax.set_title( ’Gr´ afico de x^2 + y^2’ )
+23ax.set_xlabel( ’Eje X’ )
+24ax.set_ylabel( ’Eje Y’ )
+25ax.set_zlabel( ’Eje Z’ )
+26
+27# Guardar el gr´ afico en formato EPS
+28plt.savefig( "several_variables.eps" )
+/warning_signEl lector puede bajar este programa desde el siguiente v´ ınc ulo:/desktop
+4.8. Caso Pr´ actico
+El ´ algebra vectorial es una rama fundamental de las matem´ a ticas que trata con vectores, entidades que
+tienen tanto magnitud como direcci´ on. Se utiliza en divers as ´ areas como la f´ ısica, la ingenier´ ıa, y las ciencias
+de la computaci´ on para representar fen´ omenos f´ ısicos y a bstracciones matem´ aticas.
+Unvectoren el espacio bidimensional se representa com´ unmente como v=/parenleftbiggv1
+v2/parenrightbigg
+, dondev1yv2son las
+componentes del vector en los ejes xey, respectivamente.
+Las operaciones fundamentales en el ´ algebra vectorial inc luyen:
+La suma de dos vectores aybse deﬁne como:
+a+b=/parenleftbigg
+a1+b1
+a2+b2/parenrightbigg
+La resta de dos vectores aybse deﬁne como:
+a−b=/parenleftbigg
+a1−b1
+a2−b2/parenrightbigg
+4.8. CASO PR ´ACTICO 29
+El producto punto de dos vectores ayb, tambi´ en conocido como producto escalar, se deﬁne como:
+a·b=a1b1+a2b2
+El ´ algebra vectorial es esencial para entender y trabajar c on magnitudes f´ ısicas y conceptos matem´ aticos que
+tienen tanto direcci´ on como magnitud. En este documento, e xploraremos estas operaciones b´ asicas utilizando
+herramientas computacionales.
+Ejemplo 9.
+1#!/usr/bin/env python3
+2
+3import numpy as np
+4import pandas as pd
+5import matplotlib.pyplot as plt
+6fromsklearn.preprocessing import normalize
+7
+8# Creaci´ on de vectores usando Numpy
+9vector_a = np.array([2, 3])
+10vector_b = np.array([1, 4])
+11
+12# Operaciones de ´ algebra vectorial
+13suma = vector_a + vector_b
+14resta = vector_a - vector_b
+15producto_punto = np.dot(vector_a, vector_b)
+16
+17# Normalizaci´ on de vectores usando Scikit-learn
+18vector_a_normalizado = normalize(vector_a.reshape(1, - 1))
+19vector_b_normalizado = normalize(vector_b.reshape(1, - 1))
+20
+21# Creaci´ on de DataFrames usando Pandas
+22df_vectores = pd.DataFrame({
+23 ’Vector A’ : vector_a,
+24 ’Vector B’ : vector_b
+25})
+26
+27df_resultados = pd.DataFrame({
+28 ’Operaci´ on’ : [’Suma’,’Resta’ ,’Producto Punto’ ,’Vector A Normalizado’ ,’Vector B
+Normalizado’ ],
+29 ’Resultado’ : [suma, resta, producto_punto, vector_a_normalizado[0] , vector_b_normalizado
+[0]]
+30})
+31
+32print("Vectores:" )
+33print(df_vectores)
+34print("\nResultados de Operaciones:" )
+35print(df_resultados)
+36
+37# Gr´ aficos usando Matplotlib
+38plt.quiver(0, 0, vector_a[0], vector_a[1], angles= ’xy’, scale_units= ’xy’, scale=1, color= ’r’
+)
+39plt.quiver(0, 0, vector_b[0], vector_b[1], angles= ’xy’, scale_units= ’xy’, scale=1, color= ’b’
+)
+40plt.xlim(-5, 5)
+41plt.ylim(-5, 5)
+42plt.grid()
+43plt.title( ’Vectores y sus operaciones’ )
+44plt.xlabel( ’X’)
+45plt.ylabel( ’Y’)
+46plt.legend([ ’Vector A’ ,’Vector B’ ])
+47
+48# Guardar la figura como archivo .eps
+49plt.savefig( "vectores_operaciones.eps" ,format=’eps’)
+/warning_signEl lector puede bajar este programa desde el siguiente v´ ınc ulo:/desktop
+30 CAP´ITULO 4. BIBLIOTECAS CIENT ´IFICAS
+−4 −2 0 2 4
+X−4−2024YV ectores y sus operaciones
+V ector A
+V ector B
+Figura 4.3: Gr´ aﬁco de los vectores involucrados en las oper aciones a partir de Matplotlib .
+1./vector.py
+2Vectores:
+3Vector A Vector B
+40 2 1
+51 3 4
+6
+7Resultados de Operaciones:
+8 Operaci´ on Resultado
+90 Suma [3, 7]
+101 Resta [1, -1]
+112 Producto Punto 14
+123 Vector A Normalizado [0.5547001962252291, 0.8320502943 378437]
+134 Vector B Normalizado [0.24253562503633297, 0.970142500 1453319]
+El programa implementa las siguientes funcionalidades:
+(1)Creaci´ on de Vectores : Utiliza Numpy para deﬁnir vectores en un espacio bidimensi onal.
+(2)Operaciones Vectoriales : Realiza suma, resta y producto punto entre vectores.
+(3)Normalizaci´ on de Vectores : Emplea Scikit-learn para normalizar los vectores.
+(4)Visualizaci´ on de Resultados : Usa Matplotlib para graﬁcar los vectores y sus operaciones .
+(5)Exportaci´ on de Gr´ aﬁcos : Guarda los gr´ aﬁcos en formato .eps.
+El programa muestra efectivamente c´ omo se pueden realizar y visualizar operaciones b´ asicas de ´ algebra
+vectorial en Python. Los vectores y sus operaciones se prese ntan tanto en formato tabular como gr´ aﬁco,
+facilitando la comprensi´ on de estas operaciones fundamen tales. La exportaci´ on del gr´ aﬁco en formato .eps
+permite una visualizaci´ on de alta calidad, adecuada para l a inclusi´ on en reportes o publicaciones cient´ ıﬁcas.
+Los resultados demuestran la utilidad de Python y sus biblio tecas en el manejo y an´ alisis de datos vectoriales,
+siendo una herramienta valiosa en campos como la ingenier´ ı a, la f´ ısica y la inform´ atica.
+4.8. CASO PR ´ACTICO 31
+Pr´ actica 10.
+Es conveniente que el lector pida a ChatGPT variantes a este ejemplo que incluya cambios en los valores y
+nuevos operadores.
+32 CAP´ITULO 4. BIBLIOTECAS CIENT ´IFICAS
+Cap´ ıtulo 5
+Manejo de Excepciones
+Los errores en programaci´ on pueden ser divididos de acuerd o en que momento ocurren, en tiempo de
+ejecuci´ on o en tiempo de compilaci´ on .
+5.1. Errores Comunes
+En programaci´ on, los errores son inevitables. En Python, e stos errores se conocen como “excepciones”.
+Algunos de los errores comunes incluyen:
+(1)SyntaxError : Ocurre cuando Python encuentra un error en la sintaxis del c ´ odigo.
+(2)NameError : Se produce cuando una variable no ha sido deﬁnida.
+(3)TypeError : Aparece cuando se realiza una operaci´ on con tipos de datos incompatibles.
+(4)IndexError yKeyError : Ocurren al intentar acceder a un ´ ındice o clave inexistent e en una lista o
+diccionario, respectivamente.
+5.1.1. Bloques tryyexcept
+Para manejar las excepciones, Python ofrece los bloques tryyexcept. La estructura b´ asica es la siguiente:
+1try:
+2# Intenta ejecutar este c´ odigo
+3...
+4except ExcepcionComoOcurre:
+5# Ejecuta este c´ odigo si se produce la excepci´ on especific ada
+6...
+El c´ odigo dentro del bloque tryse ejecuta primero. Si se encuentra una excepci´ on, se inter rumpe el ﬂujo
+normal y se ejecuta el c´ odigo dentro del bloque exceptcorrespondiente.
+5.2. Manejo de Excepciones Personalizadas
+Las instrucciones tryyexceptpermiten manejar errores comunes como la divisi´ on por cero . Ello hace
+robusto el programa, y evita que el programa en tiempo de ejec uci´ on falle.
+Adem´ as de las excepciones incorporadas, Python permite cr ear excepciones personalizadas. Esto se hace
+extendiendo la clase Exception de Python.
+Por ejemplo:
+1classMiExcepcion(Exception):
+2pass
+33
+34 CAP´ITULO 5. MANEJO DE EXCEPCIONES
+Luego, puedes lanzar tu excepci´ on personalizada usando raise:
+1raiseMiExcepcion( "Mensaje de error personalizado" )
+Estas excepciones personalizadas son ´ utiles para casos es pec´ ıﬁcos en tus programas y ayudan a hacer tu
+c´ odigo m´ as legible y f´ acil de depurar.
+Ejemplo 10.
+1defdividir(a, b):
+2try:
+3 # Intenta realizar la operaci´ on de divisi´ on.
+4 # Si ’b’ es cero, se producir´ a un ZeroDivisionError.
+5 resultado = a / b
+6except ZeroDivisionError:
+7 # Este bloque se ejecuta si se produce un ZeroDivisionError.
+8 # En este caso, se imprime un mensaje y se establece ’resultad o’ en None.
+9 print("No se puede dividir por cero." )
+10 resultado = None
+11 return resultado
+12
+13# Ejemplo de uso
+14numero1 = 10
+15numero2 = 0
+16
+17# Llamada a la funci´ on ’dividir’. Si ’numero2’ es cero, se ac tivar´ a el except.
+18resultado = dividir(numero1, numero2)
+19
+20# Comprobamos si el resultado es v´ alido (no None) antes de im primirlo.
+21ifresultado is not None:
+22 print("El resultado es:" , resultado)
+23else:
+24 print("La operaci´ on no se pudo completar." )
+25
+1./excepci´ on.py
+2No se puede dividir por cero.
+3La operaci´ on no se pudo completar.
+4
+/warning_signEl lector puede bajar este programa desde el siguiente v´ ınc ulo:/desktop
+En este c´ odigo:
+(1)La l´ ınearesultado = a / b dentro del bloque tryes donde puede ocurrir un ZeroDivisionError .
+(2)Sibes 0, Python lanza autom´ aticamente la excepci´ on ZeroDivisionError .
+(3)El bloque except ZeroDivisionError atrapa esta excepci´ on y ejecuta el c´ odigo dentro de´ el, ev itando
+que el programa se detenga abruptamente.
+(4)Este manejo de excepciones permite que el programa contin´ u e ejecut´ andose de manera controlada,
+incluso despu´ es de un error.
+5.3. Caso Pr´ actico
+En este ejemplo, discutiremos el manejo de excepciones en Py thon. Las excepciones son errores que pueden
+ocurrir durante la ejecuci´ on de un programa y pueden interr umpir su ﬂujo normal. El manejo de excepciones
+nospermitecontrolarestoserroresdemaneraefectiva,evi tandoqueelprogramasebloqueeyproporcionando
+una forma de gestionar las situaciones inesperadas.
+5.3. CASO PR ´ACTICO 35
+5.3.1. Sin excepciones (sin manejo de errores)
+En este ejemplo, intentaremos abrir un archivo que no existe y luego intentaremos dividir un n´ umero
+entre cero, lo que provocar´ a errores y terminar´ a el progra ma abruptamente.
+1#!/usr/bin/env python3
+2
+3# Sin el uso de excepciones
+4print("Ejemplo sin excepciones:" )
+5
+6# Intentar abrir un archivo que no existe
+7archivo = open("archivo_que_no_existe.txt" ,"r")
+8contenido = archivo.read()
+9archivo.close()
+10
+11# Intentar dividir por cero
+12resultado = 10 / 0
+13
+14print("Este mensaje no se imprimir´ a debido a los errores anterior es.")
+Cuando ejecutes este c´ odigo, ver´ as que se producir´ an err ores y el programa se detendr´ a sin mostrar el ´ ultimo
+mensaje.
+1./sinexcepciones.py
+2
+3Ejemplo sin excepciones:
+4Traceback (most recent call last):
+5File"sinexcepcion.py" , line 5, in<module>
+6archivo = open( "archivo_que_no_existe.txt" ,"r")
+7FileNotFoundError: [Errno 2] No such file or directory: ’archivo_que_no_existe.txt’
+/warning_signEl lector puede bajar este programa desde el siguiente v´ ınc ulo:/desktop
+5.3.2. Con excepciones (manejo de errores)
+En este ejemplo, utilizaremos las excepciones ( tryyexcept) para manejar errores de manera controlada y
+asegurarnos de que el programa no se detenga abruptamente.
+1#!/usr/bin/env python3
+2
+3# Con el uso de excepciones
+4print("Ejemplo con excepciones:" )
+5
+6try:
+7# Intentar abrir un archivo que no existe
+8archivo = open("archivo_que_no_existe.txt" ,"r")
+9contenido = archivo.read()
+10 archivo.close()
+11except FileNotFoundError as e:
+12 print(f"Error al abrir el archivo: {e}" )
+13
+14try:
+15 # Intentar dividir por cero
+16 resultado = 10 / 0
+17except ZeroDivisionError as e:
+18 print(f"Error al dividir por cero: {e}" )
+19
+20print("Este mensaje se imprimir´ a incluso despu´ es de los errores anteriores." )
+Cuando ejecutes este c´ odigo, ver´ as que, aunque se produzc an errores al intentar abrir el archivo inexistente
+y al dividir por cero, el programa no se detendr´ a abruptamen te. En su lugar, mostrar´ a mensajes de error
+personalizados y continuar´ a ejecutando el c´ odigo restan te.
+1./conexcepciones.py
+2
+3Ejemplo con excepciones:
+36 CAP´ITULO 5. MANEJO DE EXCEPCIONES
+4Error al abrir el archivo: [Errno 2] No such file or directory :’archivo_que_no_existe.txt’
+5Error al dividir por cero: division by zero
+6Este mensaje se imprimir´ a incluso despu´ es de los errores a nteriores.
+/warning_signEl lector puede bajar este programa desde el siguiente v´ ınc ulo:/desktop
+El uso de excepciones permite manejar errores de manera m´ as controlada, lo que puede ser crucial en
+programas m´ as grandes y complejos para garantizar que el pr ograma no falle por completo debido a un error
+inesperado.
+Cap´ ıtulo 6
+Manipulaci´ on de Archivos
+En la programaci´ on y el procesamiento de datos, la manipula ci´ on de archivos desempe˜ na un papel funda-
+mental. Los archivos son una forma com´ un de almacenar y recu perar informaci´ on de manera persistente en
+una computadora. Ya sea que necesites leer datos desde un arc hivo existente, crear nuevos archivos para
+almacenar resultados o manipular datos estructurados en fo rmatos espec´ ıﬁcos, la habilidad para trabajar
+con archivos es esencial en muchas aplicaciones.
+Ya sea que est´ es desarrollando aplicaciones que necesitan acceder a archivos locales o procesando datos
+almacenados en m´ ultiples formatos, comprender los concep tos y t´ ecnicas de manipulaci´ on de archivos te
+permitir´ a ser m´ as eﬁciente y efectivo en tus tareas de prog ramaci´ on y an´ alisis de datos.
+6.1. Lectura y Escritura de Archivos
+La manipulaci´ on de archivos se reﬁere a la capacidad de un pr ograma para leer y escribir archivos en el
+sistema de archivos de una computadora. Los archivos son una forma com´ un de almacenar datos de manera
+persistente, lo que signiﬁca que los datos se mantienen incl uso despu´ es de que se apague la computadora.
+Ejemplo de lectura de un archivo en Python:
+1# Abrir un archivo en modo lectura
+2withopen("archivo.txt" ,"r") as archivo:
+3contenido = archivo.read()
+4print(contenido)
+Ejemplo de escritura en un archivo en Python:
+1# Abrir un archivo en modo escritura
+2withopen("nuevo_archivo.txt" ,"w") as archivo:
+3archivo.write( "Hola, mundo!" )
+6.2. Rutas de Archivos
+Lasrutasdearchivossonlaubicaci´ onodirecci´ ondeunarc hivoenelsistemadearchivosdeunacomputadora.
+Las rutas pueden ser absolutas (desde la ra´ ız del sistema) o relativas (desde el directorio actual).
+Ejemplo de ruta absoluta en Windows: C:\Users\Usuario\documento.txt
+Ejemplo de ruta relativa en Linux: ./carpeta/archivo.txt
+6.3. Archivos CSV
+Los archivos CSV (Valores Separados por Comas) son utilizad os para almacenar datos tabulares en formato
+de texto. Cada l´ ınea del archivo representa una ﬁla de datos , y los valores se separan por comas u otro
+delimitador.
+37
+38 CAP´ITULO 6. MANIPULACI ´ON DE ARCHIVOS
+Ejemplo de lectura de un archivo CSV en Python:
+1import csv
+2
+3withopen("datos.csv" ,"r") as archivo:
+4lector_csv = csv.reader(archivo)
+5forfilainlector_csv:
+6 print(fila)
+6.4. Archivos JSON
+Los archivos JSON (Notaci´ on de Objetos de JavaScript) se ut ilizan para almacenar datos estructurados en
+formato de texto. Los datos se organizan en pares clave-valo r, y pueden contener listas y objetos anidados.
+Ejemplo de lectura de un archivo JSON en Python:
+1import json
+2
+3withopen("datos.json" ,"r") as archivo:
+4datos = json.load(archivo)
+5print(datos)
+6.5. Archivos XML
+Los archivos XML (Lenguaje de Marcado Extensible) se utiliz an para almacenar datos estructurados en
+formato de texto. Los datos se organizan en etiquetas que pue den tener atributos y contenido.
+Ejemplo de lectura de un archivo XML en Python:
+1import xml.etree.ElementTree as ET
+2
+3tree = ET.parse( "datos.xml" )
+4root = tree.getroot()
+5
+6forelemento inroot:
+7print(elemento.tag, elemento.text)
+6.6. Caso Pr´ actico
+1#!/usr/bin/env python3
+2
+3import csv
+4import json
+5import xml.etree.ElementTree as ET
+6
+7# Generar archivos de prueba
+8contenido_texto = "Hola, mundo"
+9datos_csv = [[ "Nombre" ,"Edad"], ["Juan","25"], ["Ana","30"]]
+10datos_json = { "Nombre" :"Carlos" ,"Edad": 28}
+11
+12nuevo_elemento_xml = ET.Element( "Persona" )
+13nombre_xml = ET.SubElement(nuevo_elemento_xml, "Nombre" )
+14nombre_xml.text = "Laura"
+15edad_xml = ET.SubElement(nuevo_elemento_xml, "Edad")
+16edad_xml.text = "22"
+17
+18tree_xml = ET.ElementTree(nuevo_elemento_xml)
+19
+20# Escribir en archivos de prueba
+21withopen("archivo.txt" ,"w") as archivo_texto:
+22 archivo_texto.write(contenido_texto)
+6.6. CASO PR ´ACTICO 39
+23
+24withopen("datos.csv" ,"w", newline= "") as archivo_csv:
+25 escritor_csv = csv.writer(archivo_csv)
+26 forfilaindatos_csv:
+27 escritor_csv.writerow(fila)
+28
+29withopen("datos.json" ,"w") as archivo_json:
+30 json.dump(datos_json, archivo_json, indent=4)
+31
+32tree_xml.write( "datos.xml" )
+33
+34# Leer y mostrar los archivos
+35withopen("archivo.txt" ,"r") as archivo_texto:
+36 contenido_texto = archivo_texto.read()
+37 print("Contenido del archivo de texto:" )
+38 print(contenido_texto)
+39
+40withopen("datos.csv" ,"r") as archivo_csv:
+41 lector_csv = csv.reader(archivo_csv)
+42 print("\nContenido del archivo CSV:" )
+43 forfilainlector_csv:
+44 print(fila)
+45
+46withopen("datos.json" ,"r") as archivo_json:
+47 datos_json = json.load(archivo_json)
+48 print("\nContenido del archivo JSON:" )
+49 print(datos_json)
+50
+51tree = ET.parse( "datos.xml" )
+52root = tree.getroot()
+53print("\nContenido del archivo XML:" )
+54forelemento inroot:
+55 print(elemento.tag, elemento.text)
+56
+57print("\nArchivos generados y mostrados con ´ exito." )
+1Contenido del archivo de texto:
+2Hola, mundo
+3
+4Contenido del archivo CSV:
+5[’Nombre’ ,’Edad’]
+6[’Juan’,’25’]
+7[’Ana’,’30’]
+8
+9Contenido del archivo JSON:
+10{’Nombre’ :’Carlos’ ,’Edad’: 28}
+11
+12Contenido del archivo XML:
+13Nombre Laura
+14Edad 22
+15
+16Archivos generados y mostrados con ´ exito.
+/warning_signEl lector puede bajar este programa desde el siguiente v´ ınc ulo:/desktop
+40 CAP´ITULO 6. MANIPULACI ´ON DE ARCHIVOS
+Cap´ ıtulo 7
+Base de Datos SQLite
+Las bases de datos son una parte integral de la mayor´ ıa de las aplicaciones modernas, proporcionando un
+medio eﬁciente y organizado para almacenar, recuperar y ges tionar datos. En esta secci´ on, se explorar´ a la
+evoluci´ on de las bases de datos, sus tipos y modelos, y la imp ortancia de los Sistemas de Gesti´ on de Bases
+de Datos (SGBD). Se discutir´ a c´ omo las bases de datos no sol o almacenan informaci´ on, sino que tambi´ en
+permiten operaciones complejas de b´ usqueda y manipulaci´ on de datos, lo cual es crucial en el mundo de la
+tecnolog´ ıa de la informaci´ on.
+7.1. Facilidades
+SQLitees una biblioteca de software que proporciona un sistema de g esti´ on de bases de datos relacional. Es
+notable por su ligereza, eﬁciencia y capacidad de ser integr ado directamente en aplicaciones. A continuaci´ on,
+se presentan algunas ventajas clave de SQLite:
+(1)Independencia de la plataforma :SQLiteno depende de un sistema operativo espec´ ıﬁco, lo que
+facilita su uso en una variedad de plataformas, incluidas m´ oviles, de escritorio y servidores.
+(2)Autonom´ ıa : Al ser una base de datos autocontenida, SQLiteno requiere un servidor de base de datos
+separado. Esto simpliﬁca la conﬁguraci´ on y reduce la sobre carga administrativa.
+(3)Facilidad de integraci´ on : Su dise˜ no simple permite una integraci´ on f´ acil y direct a en aplicaciones.
+Esto es especialmente ´ util para aplicaciones que necesita n una soluci´ on de almacenamiento local sin la
+complejidad de un sistema de base de datos completo.
+(4)Ligereza :SQLitetiene un tama˜ no de biblioteca relativamente peque˜ no, lo q ue lo hace ideal para
+dispositivos con recursos limitados o para aplicaciones qu e necesitan ser ´ agiles y eﬁcientes.
+(5)Flexibilidad en el manejo de tipos de datos : Aunque es una base de datos relacional, SQLite
+ofrece cierta ﬂexibilidad en el manejo de tipos de datos, lo q ue puede ser ´ util en ciertos casos de uso.
+(6)Facilidad de mantenimiento y actualizaci´ on : Al estar contenida en un ´ unico archivo, la gesti´ on
+y actualizaci´ on de una base de datos SQLitees sencilla, lo que facilita las tareas de mantenimiento y
+backup.
+(7)Transacciones ACID : A pesar de su simplicidad, SQLitesoporta transacciones ACID (Atomicidad,
+Consistencia, Aislamiento, Durabilidad), asegurando la ﬁ abilidad y la integridad de los datos.
+(8)Alto rendimiento : Para muchas operaciones comunes, SQLiteofrece un rendimiento sobresaliente,
+especialmente en entornos donde la carga de concurrencia es moderada o baja.
+41
+42 CAP´ITULO 7. BASE DE DATOS SQLITE
+7.2. Componentes y Uso
+Conexi´ on a SQLite.
+1import sqlite3
+2
+3# Conectar a la base de datos SQLite
+4conexion = sqlite3.connect( ’mi_base_de_datos.db’ )
+5
+6# Crear un cursor
+7cursor = conexion.cursor()
+8
+9# Cerrar la conexi´ on
+10conexion.close()
+SQLitees un sistema de gesti´ on de bases de datos relacional ligero , que se integra con Python de manera
+eﬁciente. Esta secci´ on aborda c´ omo utilizar SQLiteen Python.
+Operaciones B´ asicas con SQLite
+1import sqlite3
+2
+3# Conectar a la base de datos
+4conexion = sqlite3.connect( ’mi_base_de_datos.db’ )
+5
+6# Crear una tabla
+7conexion.execute( ’’’CREATE TABLE IF NOT EXISTS estudiantes
+8 (id INTEGER PRIMARY KEY, nombre TEXT, edad INTEGER)’’’ )
+9
+10# Insertar datos
+11conexion.execute( "INSERT INTO estudiantes (nombre, edad) VALUES (’Ana’, 21) ")
+12
+13# Consultar datos
+14cursor = conexion.cursor()
+15cursor.execute( "SELECT * FROM estudiantes" )
+16forfilaincursor.fetchall():
+17 print(fila)
+18
+19# Cerrar la conexi´ on
+20conexion.close()
+MySQLes uno de los sistemas de gesti´ on de bases de datos m´ as popul ares. En esta parte, se explora c´ omo
+interactuar con una base de datos MySQLutilizando Python.
+Conexi´ on a MySQLy Operaciones.
+1import mysql.connector
+2
+3# Conectar a la base de datos MySQL
+4conexion = mysql.connector.connect(user= ’tu_usuario’ ,
+5 password= ’tu_contrase~ na’ ,
+6 host=’127.0.0.1’ ,
+7 database= ’mi_base_de_datos’ )
+8
+9# Crear un cursor
+10cursor = conexion.cursor()
+11
+12# Crear una tabla
+13cursor.execute( "CREATE TABLE IF NOT EXISTS estudiantes (id INT AUTO_INCREM ENT PRIMARY KEY,
+nombre VARCHAR(255), edad INT)" )
+14
+15# Insertar datos
+16cursor.execute( "INSERT INTO estudiantes (nombre, edad) VALUES (’Carlos’, 23)")
+17
+18# Hacer los cambios permanentes
+19conexion.commit()
+20
+21# Consultar datos
+7.3. CASO PR ´ACTICO 43
+22cursor.execute( "SELECT * FROM estudiantes" )
+23forfilaincursor.fetchall():
+24 print(fila)
+25
+26# Cerrar la conexi´ on
+27conexion.close()
+7.3. Caso Pr´ actico
+1import sqlite3
+2
+3# Conectar a la base de datos SQLite
+4conn = sqlite3.connect( ’agenda_telefonica.db’ )
+5cursor = conn.cursor()
+6
+7# Crear tabla si no existe
+8cursor.execute( ’’’
+9CREATE TABLE IF NOT EXISTS contactos (
+10 id INTEGER PRIMARY KEY,
+11 nombre TEXT NOT NULL,
+12 telefono TEXT NOT NULL
+13)
+14’’’)
+15
+16# Funciones para manipular la agenda
+17defagregar_contacto(nombre, telefono):
+18 cursor.execute( ’INSERT INTO contactos (nombre, telefono) VALUES (?, ?)’ , (nombre,
+telefono))
+19 conn.commit()
+20
+21defbuscar_contacto(nombre):
+22 cursor.execute( ’SELECT * FROM contactos WHERE nombre LIKE ?’ , (’%’+nombre+ ’%’,))
+23 return cursor.fetchall()
+24
+25defactualizar_contacto( id, nuevo_nombre, nuevo_telefono):
+26 cursor.execute( ’UPDATE contactos SET nombre = ?, telefono = ? WHERE id = ?’ , (
+nuevo_nombre, nuevo_telefono, id))
+27 conn.commit()
+28
+29defeliminar_contacto( id):
+30 cursor.execute( ’DELETE FROM contactos WHERE id = ?’ , (id,))
+31 conn.commit()
+32
+33# Interfaz de usuario en la terminal
+34defmenu():
+35 whileTrue:
+36 print("\nAgenda Telef´ onica" )
+37 print("1. Agregar Contacto" )
+38 print("2. Buscar Contacto" )
+39 print("3. Actualizar Contacto" )
+40 print("4. Eliminar Contacto" )
+41 print("5. Salir" )
+42 opcion = input("Elige una opci´ on: " )
+43
+44 ifopcion == ’1’:
+45 nombre = input("Nombre del Contacto: " )
+46 telefono = input("Tel´ efono del Contacto: " )
+47 agregar_contacto(nombre, telefono)
+48
+49 elifopcion == ’2’:
+50 nombre = input("Nombre del Contacto a buscar: " )
+51 resultados = buscar_contacto(nombre)
+52 forcontacto inresultados:
+53 print(contacto)
+54
+44 CAP´ITULO 7. BASE DE DATOS SQLITE
+55 elifopcion == ’3’:
+56 id=int(input("ID del Contacto a actualizar: " ))
+57 nuevo_nombre = input("Nuevo Nombre: " )
+58 nuevo_telefono = input("Nuevo Tel´ efono: " )
+59 actualizar_contacto( id, nuevo_nombre, nuevo_telefono)
+60
+61 elifopcion == ’4’:
+62 id=int(input("ID del Contacto a eliminar: " ))
+63 eliminar_contacto( id)
+64
+65 elifopcion == ’5’:
+66 break
+67
+68 else:
+69 print("Opci´ on inv´ alida, intenta de nuevo." )
+70
+71# Ejecutar el programa
+72menu()
+73
+74# Cerrar la conexi´ on a la base de datos
+75conn.close()
+/warning_signEl lector puede bajar este programa desde el siguiente v´ ınc ulo:/desktop
+Pr´ actica 11.
+Es conveniente que el lector ejecute este programa y haga mod iﬁcaciones a las rutinas.
+Cap´ ıtulo 8
+Importancia de las Pruebas Unitarias
+Las pruebas unitarias son esenciales para cualquier proyec to de desarrollo de software. Su objetivo es validar
+que cada unidad de software funcione como se espera.
+Beneﬁcios Clave.
+(1)Detecci´ on temprana de errores.
+(2)Facilita los cambios y la mantenibilidad.
+(3)Mejora del dise˜ no del c´ odigo.
+(4)Act´ ua como documentaci´ on del c´ odigo.
+8.1. Commando assert
+Ejemplo de Prueba Unitaria.
+1defsuma(a, b):
+2return a + b
+3
+4deftest_suma():
+5try:
+6 assert suma(2, 3) == 5
+7 # C´ odigo a ejecutar si la verificaci´ on es exitosa
+8 print("La prueba ha sido exitosa." )
+9except AssertionError:
+10 # C´ odigo a ejecutar si la verificaci´ on falla
+11 print("La prueba ha fallado." )
+12
+13test_suma()
+Lainstrucci´ on assertenPythonseutilizapararealizarcomprobacionesdurantel aejecuci´ ondeunprograma.
+La l´ ınea de c´ odigo assert suma(2, 3) == 5 realiza lo siguiente:
+(1)Ejecuta la Funci´ on suma: La funci´ on sumase invoca con los argumentos 2y3. Se espera que esta
+funci´ on realice una operaci´ on de suma con estos dos n´ umer os.
+(2)Veriﬁcaci´ on con assert: La palabra clave assertveriﬁca si el resultado de la llamada a la funci´ on
+suma(2, 3) es igual a 5.
+(3)Comportamiento en Caso de ´Exito: Si la condici´ on suma(2, 3) == 5 es verdadera, lo que signiﬁca
+que la funci´ on sumadevuelve efectivamente 5al sumar 2y3, el programa contin´ ua su ejecuci´ on sin
+interrupciones.
+45
+46 CAP´ITULO 8. IMPORTANCIA DE LAS PRUEBAS UNITARIAS
+(4)Comportamiento en Caso de Fallo : Si la condici´ on suma(2, 3) == 5 es falsa, es decir, si la funci´ on
+sumano devuelve 5al sumar 2y3, Python lanza una excepci´ on AssertionError . Este error puede ser
+capturado y manejado, o permitir que termine la ejecuci´ on d el programa, dependiendo de c´ omo est´ e
+estructurado el c´ odigo.
+La instrucci´ on assertse utiliza com´ unmente para la depuraci´ on, ya que ayuda a ve riﬁcar que ciertas condi-
+ciones se cumplan en el c´ odigo. Es una herramienta ´ util par a conﬁrmar que el programa se comporta como
+se espera en determinadas situaciones, y ayuda a identiﬁcar problemas en fases tempranas del desarrollo.
+8.2. Biblioteca unittest
+unittest es una biblioteca de pruebas unitarias para el lenguaje de pr ogramaci´ on Python.
+Caracter´ ısticas Principales.
+(1)Estructura de pruebas en clases y m´ etodos.
+(2)Variedad de m´ etodos de aserci´ on.
+(3)Descubrimiento autom´ atico de pruebas.
+(4)Aislamiento de pruebas.
+Este c´ odigo Python utiliza el m´ odulo unittest para implementar pruebas unitarias:
+1import unittest
+2
+3classTestSuma(unittest.TestCase):
+4deftest_suma(self):
+5 self.assertEqual(suma(2, 3), 5)
+6
+7if__name__ == ’__main__’ :
+8unittest.main()
+(1)Importaci´ on de Unittest :Elc´ odigocomienzaimportandoelm´ odulo unittest ,queesunabiblioteca
+de pruebas unitarias integrada en Python.
+(2)Deﬁnici´ on de la Clase de Prueba :Sedeﬁneunaclasellamada TestSuma ,queheredade unittest.TestCase .
+Esta clase se utiliza para agrupar las pruebas relacionadas con la funci´ on de suma.
+(3)M´ etodo de Prueba : Dentro de la clase, se deﬁne un m´ etodo llamado testsuma. Este m´ etodo utiliza
+self.assertEqual para aﬁrmar que el resultado de llamar a la funci´ on sumacon los argumentos 2y
+3es igual a 5.
+(4)Ejecuci´ on Condicional :Alﬁnaldelc´ odigo,hayunaveriﬁcaci´ oncondicional ifname== ’main’:.
+Esto asegura que unittest.main() se ejecute solo si el script se ejecuta como programa princip al.
+(5)Llamada a Unittest :unittest.main() se llama para iniciar la ejecuci´ on de las pruebas. Esto eje-
+cutar´ a autom´ aticamente todos los m´ etodos en la clase TestSuma que empiecen con la palabra test.
+8.3. Biblioteca pytest
+Pytestes una biblioteca de pruebas para el lenguaje de programaci´ on Python que se destaca por su sim-
+plicidad, ﬂexibilidad y capacidad de escalabilidad. Con un enfoque en escribir pruebas m´ ınimas mientras se
+obtiene la m´ axima informaci´ on cuando fallan, pytestfacilita tanto para desarrolladores como para QA la
+escritura de pruebas unitarias y de integraci´ on. Su sintax is sencilla y el uso de aserciones de Python puro
+8.4. ESTRATEGIAS DE PRUEBAS 47
+hacen que las pruebas sean legibles y mantenibles. Adem´ as, pytestes conocido por su capacidad de ejecutar
+pruebas en paralelo, lo que mejora signiﬁcativamente la vel ocidad de los ciclos de pruebas. La biblioteca
+tambi´ en admite ﬁxtures que proporcionan una forma poderos a de conﬁgurar datos, estado y entorno para
+las pruebas, haciendo que pytestsea una herramienta preferida para pruebas automatizadas e n proyectos de
+Python de todos los tama˜ nos.
+Procedimiento para uso de la biblioteca pytest.
+Primero, se deﬁne una funci´ on simple llamada sumaen Python:
+1# archivo: my_math_module.py
+2
+3defsuma(a, b):
+4return a + b
+Script de Prueba Utilizando Pytest.
+A continuaci´ on, se escribe un script de prueba para la funci ´ onsumausandopytest:
+1# archivo: test_my_math_module.py
+2
+3import my_math_module
+4
+5deftest_suma():
+6assert my_math_module.suma(2, 3) == 5
+7assert my_math_module.suma(0, 0) == 0
+8assert my_math_module.suma(-1, 1) == 0
+Ejecuci´ on de la Prueba y Resultados.
+Para ejecutar la prueba, se utiliza el siguiente comando en l a l´ ınea de comandos:
+1pytest test_my_math_module.py
+Los resultados de la ejecuci´ on de la prueba son los siguient es:
+1=================================================== ====== testsession starts
+=================================================== ======
+2platform linux -- Python 3.8.10, pytest-7.4.3, pluggy-1.3 .0
+3collected 1 item
+4
+5test_my_math_module.py .
+[100%]
+6
+7=================================================== ======= 1 passed in0.01s
+=================================================== =======
+Este resultado indica que la prueba se ejecut´ o con ´ exito, y que la funci´ on sumapas´ o la prueba deﬁnida en el
+scripttestmymathimodule.py .
+8.4. Estrategias de Pruebas
+Las estrategias de pruebas incluyen diferentes enfoques y t ´ ecnicas:
+8.4.1. Test-Driven Development
+ElDesarrollo Guiado por Pruebas (TDD, por sus siglas en ingl´ e s Test-Driven Development) es
+una metodolog´ ıa de desarrollo de software que involucra it eraciones cortas de desarrollo en las que se escriben
+primero las pruebas, antes del c´ odigo de producci´ on. En TD D, un desarrollador comienza escribiendo un
+caso de prueba que deﬁne una mejora deseada o una nueva funcio nalidad. Luego, se escribe el c´ odigo m´ ınimo
+necesario para pasar la prueba, seguido por un proceso de ref actorizaci´ on para mejorar el c´ odigo mientras
+se mantiene su funcionalidad. TDD promueve un dise˜ no de sof tware m´ as limpio y una mayor cobertura de
+pruebas.
+48 CAP´ITULO 8. IMPORTANCIA DE LAS PRUEBAS UNITARIAS
+En el enfoque de Test-Driven Development (TDD), se comienza escribiendo pruebas antes de desarrollar
+el c´ odigo de la funci´ on. Este m´ etodo enfatiza la importan cia de las pruebas en el proceso de desarrollo de
+software. El siguiente es un ejemplo sencillo que demuestra TDD para una funci´ on de suma en Python.
+1# archivo: my_math.py
+2defsuma(a, b):
+3pass# Implementaci´ on inicial vac´ ıa
+4
+5# archivo: test_my_math.py
+6import unittest
+7import my_math
+8
+9classTestSuma(unittest.TestCase):
+10 deftest_suma(self):
+11 self.assertEqual(my_math.suma(2, 3), 5)
+12
+13if__name__ == ’__main__’ :
+14 unittest.main()
+Inicialmente, la funci´ on ‘suma‘ no tiene una implementaci ´ on funcional (se utiliza ‘pass‘). Se escribe primero
+un caso de prueba que falla, luego se desarrolla la funci´ on ‘ suma‘ hasta que la prueba es exitosa.
+8.4.2. Behavior-Driven Development
+Desarrollo Guiado por Comportamiento (BDD, por sus siglas e n ingl´ es Behavior-Driven Deve-
+lopment) es una t´ ecnica de desarrollo de software que combina los pri ncipios de TDD con ideas del dise˜ no
+orientado a objetos y an´ alisis de dominio. BDD se centra en o btener un claro entendimiento de los comporta-
+mientos deseados del software a trav´ es de la colaboraci´ on entre desarrolladores, QA y partes interesadas no
+t´ ecnicas. Utiliza un lenguaje espec´ ıﬁco de dominio (DSL) para describir el comportamiento y los resultados
+esperados, facilitando la comunicaci´ on entre todos los in volucrados en el proyecto.
+Behavior-Driven Development (BDD) es un enfoque de desarro llo de software que combina las t´ ecnicas de
+TDD con un lenguaje espec´ ıﬁco de dominio (DSL). BDD facilit a la colaboraci´ on entre desarrolladores, QA
+y stakeholders no t´ ecnicos. El siguiente es un ejemplo en Py thon utilizando BDD:
+1# archivo: suma.feature
+2Feature: Suma de dos n´ umeros
+3Scenario: Suma de dos enteros
+4Given dos enteros 2 y 3
+5When los sumo
+6Then el resultado deber´ ıa ser 5
+7
+8# archivo: steps/suma_steps.py
+9frombehave import given, when, then
+10import my_math
+11
+12@given( ’dos enteros {a:d} y {b:d}’ )
+13defstep_impl(context, a, b):
+14 context.a = a
+15 context.b = b
+16
+17@when(’los sumo’ )
+18defstep_impl(context):
+19 context.result = my_math.suma(context.a, context.b)
+20
+21@then(’el resultado deber´ ıa ser {expected:d}’ )
+22defstep_impl(context, expected):
+23 assert context.result == expected
+En este ejemplo, se deﬁne un comportamiento deseado en un len guaje natural (en el archivo ‘.feature‘) y
+luego se implementan los pasos en Python para cumplir con ese comportamiento.
+8.4. ESTRATEGIAS DE PRUEBAS 49
+8.4.3. Pruebas de Integraci´ on
+LasPruebas de Integraci´ on son un nivel de pruebas de software en el que se combinan unida des de c´ odigo
+individual y se prueban como grupo. El objetivo principal de las pruebas de integraci´ on es detectar fallos en
+la interacci´ on entre unidades integradas. Estas pruebas s on fundamentales para garantizar que los diferentes
+m´ odulos oservicios del software funcionen juntos correct amente. Amenudo, las pruebas deintegraci´ on siguen
+despu´ es de las pruebas unitarias y antes de las pruebas de si stema.
+Las Pruebas de Integraci´ on se centran en combinar unidades de c´ odigo y probarlas como grupo para asegu-
+rarse de que interact´ uan correctamente. Aqu´ ı hay un ejemp lo de pruebas de integraci´ on en Python:
+1# archivo: my_services.py
+2defservicio_a(data):
+3return data.upper()
+4
+5defservicio_b(data):
+6return data.lower()
+7
+8# archivo: test_integration.py
+9import unittest
+10import my_services
+11
+12classTestIntegration(unittest.TestCase):
+13 deftest_integration_a_b(self):
+14 result = my_services.servicio_b(my_services.servicio_ a("Texto" ))
+15 self.assertEqual(result, "texto" )
+16
+17if__name__ == ’__main__’ :
+18 unittest.main()
+Este ejemplo demuestra la integraci´ on de dos servicios, ‘s ervicioa‘ y ‘servicio b‘, donde se prueba que fun-
+cionan correctamente cuando se usan en conjunto.
+8.4.4. Pruebas de Regresi´ on
+LasPruebas de Regresi´ on son un tipo de pruebas que se realizan para veriﬁcar que un cam bio reciente
+en el c´ odigo no haya afectado adversamente las caracter´ ıs ticas existentes. Estas pruebas son cruciales para
+mantener la continuidad y la estabilidad del software, espe cialmente en entornos de desarrollo continuo. Las
+pruebas de regresi´ on aseguran que las nuevas modiﬁcacione s o correcciones de errores no introduzcan nuevos
+fallos en partes previamente probadas y funcionales del sof tware.
+Las Pruebas de Regresi´ on aseguran que los cambios reciente s en el c´ odigo no afecten negativamente a las
+funcionalidades existentes. A continuaci´ on, se presenta un ejemplo de pruebas de regresi´ on en Python:
+1# archivo: my_module.py
+2deffuncion_existente():
+3return "algo"
+4
+5# archivo: test_regression.py
+6import unittest
+7import my_module
+8
+9classTestRegression(unittest.TestCase):
+10 deftest_funcion_existente(self):
+11 self.assertEqual(my_module.funcion_existente(), "algo")
+12
+13if__name__ == ’__main__’ :
+14 unittest.main()
+Este ejemplo incluye una prueba para una funci´ on existente para veriﬁcar que sigue funcionando como se
+espera despu´ es de realizar cambios en el c´ odigo.
+50 CAP´ITULO 8. IMPORTANCIA DE LAS PRUEBAS UNITARIAS
+8.5. Caso Pr´ actico
+A continuaci´ on exponemos cuatro programas los cuales cons isten establecen:
+Deﬁnici´ on de la Aplicaci´ on y las Funciones (TDD)
+Deﬁnici´ on de la Aplicaci´ on y las Funciones (TDD) : En este primer programa, se aplica el enfoque de
+Desarrollo Guiado por Pruebas (TDD) para la creaci´ on de una serie de funciones matem´ aticas b´ asicas, como
+suma, resta, multiplicaci´ on y divisi´ on. Siguiendo los pr incipios de TDD, se escribe inicialmente el esqueleto
+de las funciones sin implementaci´ on detallada. Este enfoq ue se centra en desarrollar soluciones que satisfagan
+las necesidades espec´ ıﬁcas dictadas por los casos de prueb a, fomentando un dise˜ no de software m´ as eﬁciente
+y con un mayor enfoque en los requerimientos.
+1# archivo: math_operations.py
+2defsuma(a, b):
+3return a + b
+4
+5defresta(a, b):
+6return a - b
+7
+8defmultiplicacion(a, b):
+9return a * b
+10
+11defdivision(a, b):
+12 ifb == 0:
+13 raiseValueError( "No se puede dividir por cero." )
+14 return a / b
+Pruebas Unitarias (TDD)
+Pruebas Unitarias (TDD) : El este segundo programa consiste en un conjunto de pruebas unitarias para
+las funciones matem´ aticas deﬁnidas en el primer programa. Cada funci´ on matem´ atica tiene una prueba
+correspondiente que valida su correcto funcionamiento. Po r ejemplo, para la funci´ on de suma, se comprueba
+si el resultado de sumar dos n´ umeros espec´ ıﬁcos es el esper ado. Estas pruebas unitarias son esenciales en
+TDD y ayudan a garantizar que cada componente del software fu ncione correctamente de manera aislada.
+1# archivo: test_math_operations.py
+2import unittest
+3import math_operations
+4
+5classTestMathOperations(unittest.TestCase):
+6deftest_suma(self):
+7 self.assertEqual(math_operations.suma(2, 3), 5)
+8
+9deftest_resta(self):
+10 self.assertEqual(math_operations.resta(10, 5), 5)
+11
+12 deftest_multiplicacion(self):
+13 self.assertEqual(math_operations.multiplicacion(3, 3 ), 9)
+14
+15 deftest_division(self):
+16 self.assertEqual(math_operations.division(10, 2), 5)
+17 with self.assertRaises(ValueError):
+18 math_operations.division(10, 0)
+19
+20if__name__ == ’__main__’ :
+21 unittest.main()
+Deﬁnici´ on del Comportamiento (BDD)
+Deﬁnici´ on del Comportamiento (BDD) : En este tercer programa, se utiliza el enfoque de Desarroll o
+Guiado por Comportamiento (BDD) para describir los escenar ios de uso de la calculadora mediante un
+8.5. CASO PR ´ACTICO 51
+lenguajeespec´ ıﬁcodedominio(DSL).Estoincluyeladescr ipci´ ondecomportamientosesperadoscomo”sumar
+dos n´ umeros.enun formato que es comprensible tanto para los desarrollador es como para los interesados no
+t´ ecnicos. Luego, se implementan estos comportamientos en pasos concretos utilizando Python, vinculando
+las descripciones de alto nivel con el c´ odigo de bajo nivel.
+1# archivo: suma.feature
+2Feature: Calculadora b´ asica
+3Scenario: Sumar dos n´ umeros
+4Given tengo los n´ umeros 2 y 3
+5When los sumo
+6Then el resultado deber´ ıa ser 5
+7
+8# Otros escenarios para resta, multiplicaci´ on y divisi´ on
+9
+10# archivo: steps/calculator_steps.py
+11frombehave import given, when, then
+12import math_operations
+13
+14@given( ’tengo los n´ umeros {a:d} y {b:d}’ )
+15defstep_impl(context, a, b):
+16 context.a = a
+17 context.b = b
+18
+19@when(’los sumo’ )
+20defstep_impl(context):
+21 context.result = math_operations.suma(context.a, conte xt.b)
+22
+23@then(’el resultado deber´ ıa ser {expected:d}’ )
+24defstep_impl(context, expected):
+25 assert context.result == expected
+26
+27# Pasos adicionales para resta, multiplicaci´ on y divisi´ o n
+Pruebas de Integraci´ on y Regresi´ on
+Pruebas de Integraci´ on y Regresi´ on : Finalmente, en este cuarto programa se enfoca en las prueba s
+de integraci´ on y regresi´ on. Las pruebas de integraci´ on s e dise˜ nan para asegurar que las diferentes funciones
+matem´ aticas trabajen bien juntas, mientras que las prueba s de regresi´ on veriﬁcan que los cambios recientes
+en el c´ odigo no hayan roto ninguna funcionalidad existente . Estas pruebas son cruciales para mantener la
+integridad del sistema a medida que evoluciona y se expande.
+1# archivo: test_integration_and_regression.py
+2import unittest
+3import math_operations
+4
+5classTestIntegrationAndRegression(unittest.TestCase):
+6# Aqu´ ı se pueden agregar pruebas que combinen m´ ultiples op eraciones
+7# y verifiquen la correcta integraci´ on y no-regresi´ on de l as funcionalidades
+8
+9if__name__ == ’__main__’ :
+10 unittest.main()
+52 CAP´ITULO 8. IMPORTANCIA DE LAS PRUEBAS UNITARIAS
+Cap´ ıtulo 9
+Automatizaci´ on de Tareas
+9.1. Procesamiento de Archivos en Lote
+Enestasecci´ on,seabordar´ aelprocesodeautomatizaci´ o ndelprocesamientodearchivosenlote.Seexplorar´ an
+las t´ ecnicas y herramientas utilizadas para realizar tare as repetitivas en un conjunto de archivos de manera
+eﬁciente.
+Acontinuaci´ on,semuestraunejemploenPythondeprocesam ientodearchivosenlotequerenombraarchivos
+en un directorio:
+1import os
+2
+3# Directorio con los archivos a procesar
+4directorio = ’/ruta/al/directorio’
+5
+6# Iterar a trav´ es de los archivos en el directorio
+7fornombre_archivo inos.listdir(directorio):
+8ifnombre_archivo.endswith( ’.txt’):
+9 # Realizar alguna acci´ on en los archivos .txt, como cambiar les el nombre
+10 nuevo_nombre = nombre_archivo.replace( ’.txt’,’_procesado.txt’ )
+11 os.rename(os.path.join(directorio, nombre_archivo), o s.path.join(directorio,
+nuevo_nombre))
+9.2. Automatizaci´ on de Env´ ıo de Correos Electr´ onicos
+En esta subsecci´ on, se discutir´ a c´ omo automatizar el env ´ ıo de correos electr´ onicos. Se analizar´ an las herra-
+mientas y m´ etodos disponibles para enviar mensajes de corr eo electr´ onico de forma programada y persona-
+lizada.
+A continuaci´ on, se muestra un ejemplo en Python de automati zaci´ on de env´ ıo de correos electr´ onicos utili-
+zando la biblioteca ‘smtplib‘:
+1import smtplib
+2fromemail.mime.text import MIMEText
+3fromemail.mime.multipart import MIMEMultipart
+4
+5# Configurar el servidor SMTP
+6smtp_server = ’smtp.example.com’
+7smtp_port = 587
+8smtp_user = ’tu_usuario’
+9smtp_pass = ’tu_contrase~ na’
+10
+11# Crear el mensaje
+12mensaje = MIMEMultipart()
+13mensaje[ ’From’] =’remite@example.com’
+14mensaje[ ’To’] =’destinatario@example.com’
+15mensaje[ ’Subject’ ] =’Asunto del correo’
+53
+54 CAP´ITULO 9. AUTOMATIZACI ´ON DE TAREAS
+16
+17cuerpo_correo = ’Este es el cuerpo del correo.’
+18mensaje.attach(MIMEText(cuerpo_correo, ’plain’ ))
+19
+20# Iniciar la conexi´ on SMTP y enviar el correo
+21with smtplib.SMTP(smtp_server, smtp_port) as servidor:
+22 servidor.starttls()
+23 servidor.login(smtp_user, smtp_pass)
+24 servidor.sendmail(mensaje[ ’From’], mensaje[ ’To’], mensaje.as_string())
+25
+26print(’Correo enviado con ´ exito.’ )
+9.3. Tareas de Administraci´ on del Sistema
+Esta subsecci´ on se enfocar´ a en la automatizaci´ on de tare as de administraci´ on del sistema. Se explorar´ an las
+t´ ecnicas para gestionar y mantener un sistema inform´ atic o de manera eﬁciente y sin intervenci´ on manual
+constante.
+A continuaci´ on, se muestra un ejemplo en Python de una tarea de administraci´ on del sistema que realiza
+una copia de seguridad de una base de datos:
+1import subprocess
+2import datetime
+3
+4# Nombre de la base de datos
+5nombre_db = ’mi_base_de_datos’
+6
+7# Nombre del archivo de respaldo con marca de tiempo
+8fecha_actual = datetime.datetime.now().strftime( ’%Y-%m-%d_%H-%M-%S’ )
+9archivo_respaldo = f ’{nombre_db}_respaldo_{fecha_actual}.sql’
+10
+11# Comando para realizar la copia de seguridad utilizando mys qldump (MySQL)
+12comando = f ’mysqldump -u usuario -p contrase~ na {nombre_db} > {archiv o_respaldo}’
+13
+14# Ejecutar el comando en la l´ ınea de comandos
+15subprocess.run(comando, shell=True)
+16
+17print(f’Copia de seguridad de {nombre_db} creada en {archivo_resp aldo}’)
+9.4. Caso Pr´ actico
+Este documento describe las tareas realizadas por un progra ma de automatizaci´ on desarrollado en Python.
+Las tareas incluyen procesamiento de archivos, env´ ıo de co rreos electr´ onicos y administraci´ on del sistema.
+Tareas de Automatizaci´ on
+Procesar archivos en un directorio
+El programa cambiar´ a la extensi´ on de los archivos con exte nsi´ on.txta.processed en un directorio espe-
+ciﬁcado.
+Enviar un correo electr´ onico
+El programa notiﬁcar´ a v´ ıa correo electr´ onico cuando el p rocesamiento de archivos est´ e completo.
+Ejecutar una tarea de administraci´ on del sistema
+El programa listar´ a los procesos en ejecuci´ on en el sistem a y guardar´ a esta lista en un archivo.
+9.4. CASO PR ´ACTICO 55
+Conﬁguraci´ on Requerida
+Paraesteprograma,ser´ anecesarioajustarlasconﬁguraci onesdelservidordecorreoylasrutasdelosarchivos
+seg´ un el entorno en el que se ejecute.
+1import os
+2import smtplib
+3import subprocess
+4fromemail.mime.text import MIMEText
+5
+6defprocesar_archivos(directorio):
+7forfilename inos.listdir(directorio):
+8 iffilename.endswith( ’.txt’):
+9 nuevo_nombre = filename.replace( ’.txt’,’.processed’ )
+10 os.rename(os.path.join(directorio, filename), os.path .join(directorio,
+nuevo_nombre))
+11 print(f"Archivo procesado: {filename} -> {nuevo_nombre}" )
+12
+13defenviar_correo(sender_email, receiver_email, password, smtp_server, port):
+14 mensaje = MIMEText( ’El procesamiento de archivos ha sido completado.’ )
+15 mensaje[ ’Subject’ ] =’Notificaci´ on de Procesamiento de Archivos’
+16 mensaje[ ’From’] = sender_email
+17 mensaje[ ’To’] = receiver_email
+18
+19 try:
+20 server = smtplib.SMTP(smtp_server, port)
+21 server.starttls()
+22 server.login(sender_email, password)
+23 server.sendmail(sender_email, receiver_email, mensaje .as_string())
+24 server.quit()
+25 print(’Correo enviado exitosamente’ )
+26 except Exception as e:
+27 print(’Error al enviar correo: ’ , e)
+28
+29deflistar_procesos():
+30 proceso = subprocess.Popen([ ’ps’,’-aux’], stdout=subprocess.PIPE, stderr=subprocess.
+PIPE)
+31 stdout, stderr = proceso.communicate()
+32
+33 ifproceso.returncode == 0:
+34 withopen(’lista_procesos.txt’ ,’w’) asfile:
+35 file.write(stdout.decode())
+36 print(’Lista de procesos guardada en "lista_procesos.txt"’ )
+37 else:
+38 print(’Error al listar procesos: ’ , stderr.decode())
+39
+40# Configura estos valores
+41directorio = ’path/to/directory’
+42sender_email = ’tu_email@example.com’
+43receiver_email = ’destinatario@example.com’
+44password = ’tu_contrase~ na’
+45smtp_server = ’smtp.example.com’
+46port = 587 # Cambiar si es necesario
+47
+48# Ejecuci´ on del programa
+49procesar_archivos(directorio)
+50enviar_correo(sender_email, receiver_email, password, smtp_server, port)
+51listar_procesos()
+Requerimientos del Sistema
+Sistema Operativo
+El programa est´ a dise˜ nado para ser ejecutado en Fedora 39 . Se asume que el usuario tiene este sistema
+operativo instalado y conﬁgurado adecuadamente.
+56 CAP´ITULO 9. AUTOMATIZACI ´ON DE TAREAS
+Instalaci´ on de Python
+Fedora 39 generalmente viene con Python preinstalado. Para veriﬁcar la instalaci´ on y la versi´ on de Python,
+ejecute el siguiente comando en la terminal:
+1python3 --version
+Si Python no est´ a instalado, puede instalarlo usando el sig uiente comando:
+1sudo dnf install python3
+Conﬁguraci´ on del Entorno de Correo Electr´ onico
+Para la funci´ on de env´ ıo de correos electr´ onicos, se requ iere una conﬁguraci´ on espec´ ıﬁca del servidor SMTP.
+Se deben proporcionar los detalles del servidor SMTP, el pue rto, el correo electr´ onico del remitente y la
+contrase˜ na.
+Instalaci´ on de Bibliotecas Requeridas
+Instale las bibliotecas necesarias para el env´ ıo de correo s electr´ onicos y la ejecuci´ on de comandos del sistema.
+Ejecute el siguiente comando:
+1pip3 install smtplib
+Conﬁguraci´ on de Archivos y Permisos
+Aseg´ urese de tener los permisos necesarios para leer y escr ibir en los directorios utilizados por el programa
+y para ejecutar comandos del sistema.
+Permisos de Directorio
+Conﬁgure los permisos del directorio donde el programa proc esar´ a los archivos. Por ejemplo:
+1chmod 755 /path/to/directory
+Permisos de Ejecuci´ on
+Para ejecutar comandos del sistema, el usuario debe tener lo s permisos adecuados. Esto puede requerir
+ejecutar el script de Python con privilegios de superusuari o.
+Ejecuci´ on del Programa
+Una vez conﬁgurado el entorno, puede ejecutar el programa us ando el comando:
+1python3 script_automatizacion.py
+Cap´ ıtulo 10
+Seguridad en Python
+En la era digital actual, la seguridad de las aplicaciones es m´ as crucial que nunca. Python, siendo uno de los
+lenguajes de programaci´ on m´ as populares y vers´ atiles, s e utiliza ampliamente en diversas aplicaciones, desde
+desarrollo web hasta ciencia de datos y automatizaci´ on. Si n embargo, su popularidad tambi´ en lo convierte
+en un objetivo com´ un para ataques maliciosos. Este cap´ ıtu lo se dedica a explorar las pr´ acticas, t´ ecnicas y
+estrategias esenciales para asegurar aplicaciones escrit as en Python. Comenzaremos con las mejores pr´ acticas
+generales de seguridad, seguido de una discusi´ on sobre c´ o mo evitar vulnerabilidades comunes. Finalmente,
+nos enfocaremos en m´ etodos espec´ ıﬁcos para fortalecer la seguridad de las aplicaciones Python. A trav´ es
+de este cap´ ıtulo, se proporcionar´ an ejemplos de c´ odigo p ara ilustrar c´ omo implementar estas pr´ acticas de
+seguridad en aplicaciones reales.
+10.1. Mejores Pr´ acticas de Seguridad
+La validaci´ on de entradas es una de las mejores pr´ acticas m ´ as importantes. El siguiente fragmento de c´ odigo
+muestra c´ omo validar una entrada de usuario antes de proces arla:
+1defvalidar_entrada(entrada):
+2if not entrada.isnumeric():
+3 raiseValueError( "La entrada debe ser num´ erica" )
+4# Procesamiento adicional de la entrada
+10.2. Evitar Vulnerabilidades Comunes
+Una vulnerabilidad com´ un en Python es la inyecci´ on SQL. El siguiente c´ odigo utiliza SQLAlchemy, un ORM
+para Python, para evitar este tipo de vulnerabilidad:
+1fromsqlalchemy import create_engine
+2fromsqlalchemy.orm import sessionmaker
+3
+4engine = create_engine( ’sqlite:///database.db’ )
+5Session = sessionmaker(bind=engine)
+6
+7session = Session()
+8
+9# Uso seguro de par´ ametros
+10query = session.query(MyModel). filter(MyModel.column == param)
+10.3. Protecci´ on de Aplicaciones
+Para proteger una aplicaci´ on Python, es crucial implement ar una autenticaci´ on segura. El siguiente ejemplo
+utiliza Flask y su extensi´ on Flask-Login para gestionar la autenticaci´ on de usuarios:
+57
+58 CAP´ITULO 10. SEGURIDAD EN PYTHON
+1fromflaskimport Flask, request, redirect, render_template
+2fromflask_login import LoginManager, UserMixin, login_user
+3
+4app = Flask(__name__)
+5login_manager = LoginManager()
+6login_manager.init_app(app)
+7
+8# Definici´ on de la clase de usuario
+9classUser(UserMixin):
+10 # Implementaci´ on de la clase usuario
+11
+12@login_manager.user_loader
+13defload_user(user_id):
+14 # Cargar usuario desde la base de datos
+15 return User.get(user_id)
+16
+17@app.route( ’/login’ , methods=[ ’GET’,’POST’])
+18deflogin():
+19 # L´ ogica de autenticaci´ on del usuario
+20 return render_template( ’login.html’ )
+10.4. Caso Pr´ actico
+El programa incluye varias funcionalidades clave en el cont exto de la seguridad de aplicaciones:
+Hashing de Contrase˜ nas
+El programa utiliza la biblioteca bcryptpara:
+(1)Generar un hash seguro de las contrase˜ nas.
+(2)Veriﬁcar contrase˜ nas contra su hash almacenado.
+Esto representa una pr´ actica recomendada para el almacena miento seguro de contrase˜ nas.
+Uso Seguro de Bases de Datos
+Mediante el uso de sqlite3, el programa:
+(1)Interact´ ua con una base de datos SQLite.
+(2)Implementa consultas parametrizadas para prevenir inyecc iones SQL.
+Autenticaci´ on Basada en Token
+El programa:
+(1)Genera un token de seguridad usando secrets.
+(2)Controla el acceso a funciones cr´ ıticas mediante la valida ci´ on de este token.
+Inicializaci´ on y Manejo de la Base de Datos
+El programa gestiona la base de datos realizando:
+(1)Creaci´ on de la base de datos y las tablas necesarias si no exi sten.
+(2)Inserci´ on y recuperaci´ on segura de usuarios en la base de d atos.
+10.4. CASO PR ´ACTICO 59
+1import bcrypt
+2import sqlite3
+3import secrets
+4
+5# Funci´ on para crear un hash de una contrase~ na
+6defhash_password(password):
+7return bcrypt.hashpw(password.encode( ’utf-8’ ), bcrypt.gensalt())
+8
+9# Funci´ on para verificar una contrase~ na contra un hash
+10defcheck_password(password, hashed):
+11 return bcrypt.checkpw(password.encode( ’utf-8’ ), hashed)
+12
+13# Funci´ on para conectar a la base de datos y crear una tabla si no existe
+14definicializar_base_de_datos():
+15 conn = sqlite3.connect( ’mi_base_de_datos.db’ )
+16 cursor = conn.cursor()
+17 cursor.execute( ’’’
+18 CREATE TABLE IF NOT EXISTS usuarios (
+19 id INTEGER PRIMARY KEY,
+20 nombre TEXT,
+21 password_hash TEXT
+22 )
+23 ’’’)
+24 conn.commit()
+25 conn.close()
+26
+27# Funci´ on segura para consultar la base de datos
+28defconsulta_segura(usuario):
+29 conn = sqlite3.connect( ’mi_base_de_datos.db’ )
+30 cursor = conn.cursor()
+31 cursor.execute( "SELECT * FROM usuarios WHERE nombre = ?" , (usuario,))
+32 resultado = cursor.fetchall()
+33 conn.close()
+34 return resultado
+35
+36# Funci´ on que genera un token de seguridad
+37defgenerar_token():
+38 return secrets.token_hex(16)
+39
+40# Funci´ on protegida por un token
+41deffuncion_protegida(token_usuario):
+42 iftoken_usuario == TOKEN_SECRETO:
+43 print("Acceso concedido" )
+44 # L´ ogica de la funci´ on protegida
+45 else:
+46 print("Acceso denegado" )
+47
+48# Inicializar base de datos
+49inicializar_base_de_datos()
+50
+51# Crear un usuario de ejemplo
+52usuario = ’usuario_prueba’
+53contrase~ na = ’contrase~ na_segura’
+54hashed_password = hash_password(contrase~ na)
+55
+56# Guardar usuario en la base de datos
+57conn = sqlite3.connect( ’mi_base_de_datos.db’ )
+58cursor = conn.cursor()
+59cursor.execute( "INSERT INTO usuarios (nombre, password_hash) VALUES (?, ? )", (usuario,
+hashed_password))
+60conn.commit()
+61conn.close()
+62
+63# Verificar contrase~ na
+64usuario_encontrado = consulta_segura(usuario)
+65ifusuario_encontrado:
+66 verificacion = check_password( ’contrase~ na_segura’ , usuario_encontrado[0][2])
+67 print("Verificaci´ on de la contrase~ na:" , verificacion)
+60 CAP´ITULO 10. SEGURIDAD EN PYTHON
+68
+69# Generar y almacenar un token de seguridad
+70TOKEN_SECRETO = generar_token()
+71print("Token de seguridad:" , TOKEN_SECRETO)
+72
+73# Intentar acceder a la funci´ on protegida
+74funcion_protegida(TOKEN_SECRETO) # Acceso concedido
+75funcion_protegida( "token_incorrecto" )# Acceso denegado
+Cap´ ıtulo 11
+Programaci´ on Orientada a Objetos
+La Programaci´ on Orientada a Objetos (POO) es un paradigma d e programaci´ on que se basa en el concepto
+de objetos. Los objetos son instancias de clases, y las clase s son plantillas que deﬁnen la estructura y el
+comportamiento de los objetos. La POO se basa en cuatro conce ptos fundamentales:
+11.1. Deﬁniciones B´ asicas
+11.1.1. Objetos
+Un objeto es una instancia concreta de una clase y representa una entidad del mundo real. Los objetos
+tienen atributos (variables) que almacenan datos y m´ etodo s (funciones) que realizan acciones. Por ejemplo,
+en un sistema de gesti´ on de bibliotecas, un objeto Libro pod r´ ıa tener atributos como t´ ıtulo, autor y a˜ no de
+publicaci´ on, y m´ etodos como prestar() y devolver().
+11.1.2. Clases
+Una clase es una plantilla que deﬁne la estructura y el compor tamiento de los objetos. En una clase se
+especiﬁcan los atributos y los m´ etodos que los objetos de es a clase tendr´ an. Por ejemplo, la clase Libro
+podr´ ıa deﬁnir que todos los libros tienen un t´ ıtulo y un aut or como atributos, y m´ etodos para prestar y
+devolver.
+11.1.3. Herencia
+La herencia es un mecanismo que permite que una clase herede a tributos y m´ etodos de otra clase. La clase
+que hereda se llama subclase o clase derivada, y la clase de la que hereda se llama superclase o clase base. La
+herencia permite la reutilizaci´ on de c´ odigo y la creaci´ o n de jerarqu´ ıas de clases. Por ejemplo, una subclase
+de Libro podr´ ıa ser LibroDigital, que hereda los atributos de Libro pero tiene m´ etodos adicionales para la
+descarga de libros digitales.
+11.1.4. Polimorﬁsmo
+El polimorﬁsmo permite que objetos de diferentes clases sea n tratados de la misma manera. Esto signiﬁca
+que un objeto puede responder a un m´ etodo de manera diferent e seg´ un su clase. El polimorﬁsmo permite
+la ﬂexibilidad en el dise˜ no y la extensi´ on de programas. Po r ejemplo, tanto un Libro como un LibroDigital
+pueden tener un m´ etodo mostrarResumen(), pero cada uno lo i mplementar´ a de manera diferente.
+11.1.5. Clases y Objetos
+En este cap´ ıtulo, profundizaremos en los conceptos de clas es y objetos en la Programaci´ on Orientada a
+Objetos.
+61
+62 CAP´ITULO 11. PROGRAMACI ´ON ORIENTADA A OBJETOS
+Para deﬁnir una clase en Python, utilizamos la palabra clave class, seguida del nombre de la clase y dos
+puntos. Por ejemplo:
+1classLibro:
+2# Atributos
+3titulo = ""
+4autor = ""
+5ano_publicacion = 0
+6
+7# Metodos
+8defprestar(self):
+9 print("El libro ha sido prestado" )
+10
+11 defdevolver(self):
+12 print("El libro ha sido devuelto" )
+En este ejemplo, hemos deﬁnido una clase llamada Libro, que tiene atributos como titulo,autory
+anopublicacion , as´ ı como m´ etodos como prestar() ydevolver() .
+11.1.6. Creaci´ on de Objetos
+Para crear un objeto a partir de una clase, utilizamos la sint axis de instanciaci´ on. Por ejemplo:
+1# Crear un objeto de la clase Libro
+2mi_libro = Libro()
+3
+4# Asignar valores a los atributos
+5mi_libro.titulo = "La Odisea"
+6mi_libro.autor = "Homero"
+7mi_libro.ano_publicacion = 800 a.C.
+Hemos creado un objeto milibroa partir de la clase Libroy hemos asignado valores a sus atributos.
+11.1.7. Acceso a Atributos y M´ etodos
+Para acceder a los atributos y m´ etodos de un objeto, utiliza mos la notaci´ on de punto. Por ejemplo:
+1# Acceder a los atributos
+2print("T´ ıtulo:" , mi_libro.titulo)
+3print("Autor:" , mi_libro.autor)
+4print("A~ no de Publicaci´ on:" , mi_libro.ano_publicacion)
+5
+6# Llamar a m´ etodos
+7mi_libro.prestar()
+8mi_libro.devolver()
+En este c´ odigo, hemos accedido a los atributos y llamado a lo s m´ etodos del objeto milibro.
+11.2. Herencia y Polimorﬁsmo
+En este cap´ ıtulo, exploraremos los conceptos de herencia y polimorﬁsmo en la Programaci´ on Orientada a
+Objetos.
+11.2.1. Herencia
+La herencia permite que una clase herede atributos y m´ etodo s de otra clase. Para deﬁnir una subclase,
+utilizamos la palabra clave class, seguida del nombre de la subclase y el nombre de la superclas e entre
+par´ entesis. Por ejemplo:
+1classLibroDigital(Libro):
+2# Atributos adicionales
+3formato = ""
+11.2. HERENCIA Y POLIMORFISMO 63
+4
+5# Metodo adicional
+6defdescargar(self):
+7 print("El libro digital se ha descargado" )
+Hemos creado una subclase LibroDigital que hereda de la superclase Libroy agrega atributos y m´ etodos
+adicionales.
+11.2.2. Polimorﬁsmo
+El polimorﬁsmo nos permite tratar objetos de diferentes cla ses de manera uniforme. Por ejemplo, podemos
+crear una lista de objetos y llamar a un m´ etodo com´ un en todo s ellos:
+1libro1 = Libro()
+2libro2 = LibroDigital()
+3
+4libros = [libro1, libro2]
+5
+6forlibroinlibros:
+7libro.prestar()
+En este c´ odigo, tanto libro1comolibro2responden al m´ etodo prestar() a pesar de ser de diferentes
+clases.
+11.2.3. Encapsulaci´ on y Abstracci´ on
+En este cap´ ıtulo, exploraremos los conceptos de encapsula ci´ on y abstracci´ on en la Programaci´ on Orientada
+a Objetos.
+11.2.4. Encapsulaci´ on
+La encapsulaci´ on es el principio de ocultar los detalles in ternos de un objeto y proporcionar una interfaz
+p´ ublica para interactuar con ´ el. En Python, utilizamos m´ etodos para acceder y modiﬁcar los atributos de
+un objeto. Por ejemplo:
+1classLibro:
+2def__init__(self, titulo, autor):
+3 self.titulo = titulo
+4 self.autor = autor
+5 self.__prestado = False # Atributo privado
+6
+7defprestar(self):
+8 if not self.__prestado:
+9 print("El libro ha sido prestado" )
+10 self.__prestado = True
+11 else:
+12 print("El libro ya est´ a prestado" )
+13
+14 defdevolver(self):
+15 ifself.__prestado:
+16 print("El libro ha sido devuelto" )
+17 self.__prestado = False
+18 else:
+19 print("El libro no est´ a prestado" )
+20
+21# Crear un objeto de la clase Libro
+22mi_libro = Libro( "La Odisea" ,"Homero" )
+23
+24# Acceder a atributos y m´ etodos
+25print("T´ ıtulo:" , mi_libro.titulo)
+26mi_libro.prestar()
+27mi_libro.devolver()
+64 CAP´ITULO 11. PROGRAMACI ´ON ORIENTADA A OBJETOS
+En este ejemplo, hemos encapsulado el atributo prestado y proporcionado m´ etodos para acceder y modi-
+ﬁcar su estado.
+11.2.5. Abstracci´ on
+La abstracci´ on es el proceso de simpliﬁcar la complejidad d e un objeto al enfocarse en los aspectos relevantes
+y ocultar los detalles innecesarios. Las clases y los objeto s son ejemplos de abstracci´ on, ya que representan
+entidades del mundo real de manera simpliﬁcada.
+La Programaci´ on Orientada a Objetos (POO) es un paradigma p oderoso que se basa en el concepto de
+objetos, clases, herencia, polimorﬁsmo, encapsulaci´ on y abstracci´ on. Estos conceptos permiten la creaci´ on
+de programas m´ as estructurados, modularizados y reutiliz ables. Al comprender y aplicar estos principios, los
+programadores pueden desarrollar software m´ as eﬁciente y mantenible.
+En los cap´ ıtulos anteriores, hemos explorado los concepto s b´ asicos de POO, la creaci´ on de clases y objetos, la
+herencia y el polimorﬁsmo, as´ ı como la encapsulaci´ on y la a bstracci´ on. Estos son fundamentos importantes
+que te ayudar´ an a construir una base s´ olida en el mundo de la programaci´ on orientada a objetos.
+La POO es una herramienta poderosa en el arsenal de un program ador, y su comprensi´ on puede abrir la
+puerta a la creaci´ on de aplicaciones complejas y robustas. Contin´ ua practicando y explorando este paradigma
+para convertirte en un desarrollador de software m´ as h´ abi l y vers´ atil.
+11.3. Caso Pr´ actico
+En el ´ ambito de la programaci´ on orientada a objetos (POO), los sistemas que gestionan entidades complejas
+y sus interacciones son ejemplos cl´ asicos que demuestran l a eﬁcacia de este paradigma. Este documento
+presenta un sistema de gesti´ on de concesionario de autom´ o viles implementado en Python, que sirve como un
+ejemplo pr´ actico de los conceptos fundamentales de la POO, como clases, objetos, herencia y encapsulaci´ on.
+El programa est´ a estructurado en torno a dos clases princip ales:Vehiculo yConcesionario . La clase
+Vehiculo deﬁne las propiedades y m´ etodos b´ asicos de un veh´ ıculo, c omo su marca, modelo y a˜ no de fa-
+bricaci´ on. Por otro lado, la clase Concesionario act´ ua como un contenedor para m´ ultiples instancias de
+Vehiculo , permitiendo la gesti´ on del inventario de veh´ ıculos de un concesionario. Este enfoque no solo facili-
+ta la representaci´ on de entidades del mundo real dentro del programa sino que tambi´ en permite una gesti´ on
+eﬁciente y organizada de los datos.
+El sistema ofrece funcionalidades b´ asicas como agregar ve h´ ıculos al inventario del concesionario y mostrar
+detalles de los veh´ ıculos disponibles. A trav´ es de este si stema, se ilustra c´ omo la POO puede ser utilizada
+para construir programas estructurados, modulares y f´ aci lmente escalables, lo cual es esencial en el desarrollo
+de software moderno.
+1classVehiculo:
+2def__init__(self, marca, modelo, a~ no):
+3 self.marca = marca
+4 self.modelo = modelo
+5 self.a~ no = a~ no
+6
+7defmostrar_detalle(self):
+8 print(f"Marca: {self.marca}, Modelo: {self.modelo}, A~ no: {self .a~ no}")
+9
+10classConcesionario:
+11 def__init__(self):
+12 self.vehiculos = []
+13
+14 defagregar_vehiculo(self, vehiculo):
+15 self.vehiculos.append(vehiculo)
+16
+17 defmostrar_inventario(self):
+18 if not self.vehiculos:
+19 print("No hay veh´ ıculos en el inventario." )
+11.3. CASO PR ´ACTICO 65
+20 forvehiculo inself.vehiculos:
+21 vehiculo.mostrar_detalle()
+22
+23# Crear veh´ ıculos
+24vehiculo1 = Vehiculo( "Toyota" ,"Corolla" , 2020)
+25vehiculo2 = Vehiculo( "Ford","Mustang" , 2021)
+26
+27# Crear un concesionario y agregar veh´ ıculos
+28mi_concesionario = Concesionario()
+29mi_concesionario.agregar_vehiculo(vehiculo1)
+30mi_concesionario.agregar_vehiculo(vehiculo2)
+31
+32# Mostrar los veh´ ıculos en el concesionario
+33mi_concesionario.mostrar_inventario()
+/warning_signEl lector puede bajar este programa desde el siguiente v´ ınc ulo:/desktop
+Pr´ actica 12.
+Es conveniente que el lector ejecute el programa referido.
+66 CAP´ITULO 11. PROGRAMACI ´ON ORIENTADA A OBJETOS
+Cap´ ıtulo 12
+Machine Learning con Python
+El Machine Learning (ML) con Python es un campo vibrante que c ombina an´ alisis estad´ ıstico, miner´ ıa de
+datos, reconocimiento de patrones y programaci´ on.
+12.1. Deﬁnici´ on de Machine Learning
+El Machine Learning es un subcampo de la inteligencia artiﬁc ial que se enfoca en desarrollar algoritmos para
+permitir que las computadoras aprendan de los datos. Los tip os principales incluyen:
+(1)Aprendizaje Supervisado : Aprender una funci´ on que mapea entradas a salidas basado e n ejemplos
+etiquetados.
+(2)Aprendizaje No Supervisado : Modelar la estructura de los datos para aprender sobre ello s sin
+etiquetas.
+12.2. Ventajas de Python en Machine Learning
+Python es un lenguaje recomendable para recrear Machine Lea rning debido a:
+(1)Sintaxis Clara y Legible : Facilita la escritura y comprensi´ on de c´ odigos complejo s.
+(2)Bibliotecas Poderosas : ComoScikit-learn ,Pandas,NumPyyMatplotlib .
+(3)Comunidad y Soporte : Una comunidad amplia y activa.
+(4)Flexibilidad y Eﬁciencia : Integra diferentes tipos de datos y tecnolog´ ıas.
+(5)Popularidad en Investigaci´ on y Industria : Ampliamente utilizado en academias e industrias.
+12.3. Machine Learning y Scikit-learn
+El programa utiliza Scikit-learn para clasiﬁcar datos util izando el conjunto de datos Iris y un clasiﬁcador de
+´Arbol de Decisi´ on. A continuaci´ on se presenta una explica ci´ on detallada de cada parte del c´ odigo.
+Ejemplo 12.
+1#!/usr/bin/env python3
+2# Importar las bibliotecas necesarias
+3fromsklearn.datasets import load_iris
+4fromsklearn.model_selection import train_test_split
+5fromsklearn.tree import DecisionTreeClassifier
+67
+68 CAP´ITULO 12. MACHINE LEARNING CON PYTHON
+6fromsklearn.metrics import accuracy_score
+7
+8# Cargar el conjunto de datos Iris
+9iris = load_iris()
+10X = iris.data
+11y = iris.target
+12
+13# Dividir el conjunto de datos en un conjunto de entrenamient o y un conjunto de prueba
+14X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+15
+16# Crear el modelo de ´Arbol de Decisi´ on
+17clf = DecisionTreeClassifier()
+18
+19# Entrenar el modelo con el conjunto de datos de entrenamient o
+20clf.fit(X_train, y_train)
+21
+22# Realizar predicciones en el conjunto de datos de prueba
+23y_pred = clf.predict(X_test)
+24
+25# Calcular la precisi´ on del modelo
+26accuracy = accuracy_score(y_test, y_pred)
+27print(f"Accuracy: {accuracy}" )
+28
+1./machine_learning.py
+2Accuracy: 1.0
+3
+/warning_signEl lector puede bajar este programa desde el siguiente v´ ınc ulo:/desktop
+12.4. Desglose del C´ odigo
+Importaci´ on de Bibliotecas.
+1fromsklearn.datasets import load_iris
+2fromsklearn.model_selection import train_test_split
+3fromsklearn.tree import DecisionTreeClassifier
+4fromsklearn.metrics import accuracy_score
+(1)sklearn.datasets : Para cargar conjuntos de datos.
+(2)sklearn.model selection : Herramientas para dividir los datos.
+(3)sklearn.tree : Algoritmos basados en ´ arboles.
+(4)sklearn.metrics : M´ etricas de evaluaci´ on.
+Carga del Conjunto de Datos Iris.
+1iris = load_iris()
+2X = iris.data
+3y = iris.target
+Carga las caracter´ ısticas y etiquetas del conjunto de dato s Iris.
+Muestra del Conjunto de Datos Iris.
+1Sepal Length, Sepal Width, Petal Length, Petal Width, Speci es
+25.1, 3.5, 1.4, 0.2, setosa
+34.9, 3.0, 1.4, 0.2, setosa
+4...
+12.4. DESGLOSE DEL C ´ODIGO 69
+Divisi´ on de Datos en Entrenamiento y Prueba.
+1X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+Divide el conjunto de datos en un conjunto de entrenamiento ( 70%) y un conjunto de prueba (30%).
+Creaci´ on y Entrenamiento del Modelo.
+1clf = DecisionTreeClassifier()
+2clf.fit(X_train, y_train)
+Crea y entrena un modelo de ´Arbol de Decisi´ on.
+Realizar Predicciones.
+1y_pred = clf.predict(X_test)
+Utiliza el modelo para hacer predicciones sobre el conjunto de prueba.
+Evaluaci´ on del Modelo.
+1accuracy = accuracy_score(y_test, y_pred)
+2print(f"Accuracy: {accuracy}" )
+Calcula y muestra la precisi´ on del modelo.
+Ejemplo de salida del programa despu´ es de realizar la clasi ﬁcaci´ on:
+1Accuracy: 0.955
+1#!/usr/bin/env python3
+2
+3import matplotlib.pyplot as plt
+4fromsklearn.datasets import load_iris
+5fromsklearn.model_selection import train_test_split
+6fromsklearn.tree import DecisionTreeClassifier
+7fromsklearn.metrics import accuracy_score
+8
+9# Cargar el conjunto de datos Iris
+10iris = load_iris()
+11X = iris.data
+12y = iris.target
+13
+14# Dividir el conjunto de datos en un conjunto de entrenamient o y un conjunto de prueba
+15X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+16
+17# Crear el modelo de ´Arbol de Decisi´ on
+18clf = DecisionTreeClassifier()
+19
+20# Entrenar el modelo con el conjunto de datos de entrenamient o
+21clf.fit(X_train, y_train)
+22
+23# Realizar predicciones en el conjunto de datos de prueba
+24y_pred = clf.predict(X_test)
+25
+26# Calcular la precisi´ on del modelo
+27accuracy = accuracy_score(y_test, y_pred)
+28print(f"Accuracy: {accuracy}" )
+29
+30# Graficar los datos de entrenamiento y prueba
+31plt.figure(figsize=(12, 6))
+32plt.subplot(1, 2, 1)
+33plt.scatter(X_train[:, 0], X_train[:, 1], c=y_train, cma p=’winter’ , edgecolor= ’k’, label= "
+Entrenamiento" )
+34plt.xlabel( ’Sepal Length’ )
+35plt.ylabel( ’Sepal Width’ )
+36plt.title( ’Datos de Entrenamiento’ )
+37plt.legend()
+70 CAP´ITULO 12. MACHINE LEARNING CON PYTHON
+4.5 5.0 5.5 6.0 6.5 7.0 7.5
+Sepal Length2.02.53.03.54.0Sepal WidthDatos de Entrenamiento
+Entrenamiento
+4.5 5.0 5.5 6.0 6.5 7.0 7.5 8.0
+Sepal Length2.53.03.54.04.5Sepal WidthDatos de Prueba
+Prueba
+Figura 12.1: Gr´ aﬁcos del agrupamiento de los datos de entre namiento y validaci´ on a partir de Matplotlib .
+38
+39plt.subplot(1, 2, 2)
+40plt.scatter(X_test[:, 0], X_test[:, 1], c=y_test, cmap= ’autumn’ , edgecolor= ’k’, label= "
+Prueba" )
+41plt.xlabel( ’Sepal Length’ )
+42plt.ylabel( ’Sepal Width’ )
+43plt.title( ’Datos de Prueba’ )
+44plt.legend()
+45
+46# Guardar la gr´ afica en un archivo .eps
+47plt.savefig( "agrupamiento.eps" ,format=’eps’)
+/warning_signEl lector puede bajar este programa desde el siguiente v´ ınc ulo:/desktop
+Este programa muestra c´ omo utilizar un modelo de ´Arbol de Decisi´ on para clasiﬁcar las especies de las ﬂores
+de iris, utilizando medidas f´ ısicas como caracter´ ıstica s. Se eval´ ua la precisi´ on del modelo para determinar su
+eﬁcacia en la predicci´ on de datos no vistos anteriormente.
+An´ alisis del Resultado.
+(1)Accuracy: 1.0 : Esta salida indica que el modelo de aprendizaje autom´ atic o ha logrado una precisi´ on
+perfecta en el conjunto de datos de prueba. Signiﬁca que en es ta instancia de prueba, el modelo ha
+predicho correctamente el 100% de las veces.
+(2)Consideraciones Importantes :
+(a)Una precisi´ on del 100% es rara y puede sugerir sobreajuste, especialmente si el conjunto de datos
+es complejo.
+(b)El sobreajuste ocurre cuando un modelo aprende tanto los det alles como el ruido del conjunto de
+entrenamiento, lo cual puede perjudicar su rendimiento en d atos nuevos.
+(c)Es crucial veriﬁcar la robustez del modelo y asegurarse de qu e los datos de prueba sean represen-
+tativos y variados.
+El resultado Accuracy: 1.0 es indicativo de un alto rendimiento del modelo en el conjunt o de datos de
+prueba, pero es recomendable realizar un an´ alisis m´ as det allado para conﬁrmar que el modelo no est´ a
+sobreajustado y es generalizable a nuevos datos.
+12.5. USOS DEL MACHINE LEARNING CON PYTHON 71
+12.5. Usos del Machine Learning con Python
+El Machine Learning con Python se aplica en:
+(1)Reconocimiento de Im´ agenes y Visi´ on Computacional : Como reconocimiento facial y detecci´ on
+de objetos.
+(2)Procesamiento del Lenguaje Natural (NLP) : En traducci´ on autom´ atica y an´ alisis de sentimien-
+tos.
+(3)Predicci´ on y An´ alisis de Datos : Utilizado en ﬁnanzas y medicina.
+(4)Sistemas de Recomendaci´ on : En comercio electr´ onico y streaming.
+(5)Automatizaci´ on y Rob´ otica : Veh´ ıculos aut´ onomos y rob´ otica.
+(6)Detecci´ on de Fraude y An´ alisis de Riesgos : En el sector bancario y ﬁnanciero.
+12.6. Visualizaci´ on con Scikit-learn
+Scikit-learn es una biblioteca de Python que ofrece herramientas eﬁcient es para el an´ alisis de datos y la
+miner´ ıa de datos. Es ampliamente reconocida en la comunida d cient´ ıﬁca y tecnol´ ogica por su facilidad de
+uso y versatilidad.
+12.7. Funciones Principales
+(1)Aprendizaje Autom´ atico :Scikit-learn soporta varios aspectos del aprendizaje autom´ atico, como
+clasiﬁcaci´ on, regresi´ on y agrupamiento.
+(2)Preprocesamiento de Datos : Ofrece herramientas para la normalizaci´ on, estandariza ci´ on y codiﬁ-
+caci´ on de caracter´ ısticas.
+(3)Reducci´ on de Dimensionalidad : Incluye m´ etodos para reducir la dimensionalidad de los da tos,
+mejorando as´ ı la eﬁciencia de los algoritmos.
+(4)Selecci´ on de Modelos : Proporciona funcionalidades para la validaci´ on cruzada y la b´ usqueda de
+hiperpar´ ametros.
+(5)Algoritmos de Aprendizaje Autom´ atico : Contiene una amplia gama de algoritmos, desde simples
+hasta avanzados.
+(6)Integraci´ on con Otras Bibliotecas : Se integra eﬁcientemente con bibliotecas como NumPy,Pandas
+yMatplotlib .
+(7)Comunidad y Documentaci´ on : Cuenta con una extensa comunidad de usuarios y una document a-
+ci´ on bien mantenida.
+12.8. Modelos de Clasiﬁcaci´ on y Regresi´ on
+La clasiﬁcaci´ on y la regresi´ on son dos de los problemas m´ a s comunes que se abordan en el campo del
+aprendizaje autom´ atico. Aunque ambos se utilizan para hac er predicciones, diﬁeren signiﬁcativamente en la
+naturaleza de sus predicciones y sus aplicaciones. Este doc umento tiene como objetivo brindar una compren-
+si´ on clara de estos dos tipos de modelos, sus diferencias y c ´ omo se aplican en el an´ alisis de datos.
+Ejemplo 12.
+72 CAP´ITULO 12. MACHINE LEARNING CON PYTHON
+1#!/usr/bin/env python3
+2
+3import numpy as np
+4import pandas as pd
+5import matplotlib.pyplot as plt
+6fromsklearn.datasets import fetch_california_housing
+7fromsklearn.model_selection import train_test_split
+8fromsklearn.linear_model import LinearRegression
+9fromsklearn.metrics import mean_squared_error, r2_score
+10
+11# Cargar el conjunto de datos de Viviendas de California
+12california_housing = fetch_california_housing()
+13X = california_housing.data
+14y = california_housing.target
+15
+16# Convertir a DataFrame de Pandas
+17california_df = pd.DataFrame(X, columns=california_hou sing.feature_names)
+18california_df[ ’MedHouseVal’ ] = y # MedHouseVal es el valor medio de las viviendas
+19
+20# Elegir una caracter´ ıstica para la regresi´ on, por ejempl o, MedInc (ingreso medio)
+21X_medinc = california_df[[ ’MedInc’ ]].values
+22
+23# Dividir los datos en conjuntos de entrenamiento y prueba
+24X_train, X_test, y_train, y_test = train_test_split(X_me dinc, y, test_size=0.3, random_state
+=42)
+25
+26# Crear y entrenar el modelo de Regresi´ on Lineal
+27regressor = LinearRegression()
+28regressor.fit(X_train, y_train)
+29
+30# Realizar predicciones sobre el conjunto de prueba
+31y_pred = regressor.predict(X_test)
+32
+33# Calcular m´ etricas de rendimiento
+34mse = mean_squared_error(y_test, y_pred)
+35r2 = r2_score(y_test, y_pred)
+36print(f"Mean Squared Error: {mse}" )
+37print(f"R^2 Score: {r2}" )
+38
+39# Visualizar los resultados
+40plt.figure(figsize=(14, 6))
+41
+42# Histograma de los precios de las viviendas
+43plt.subplot(1, 2, 1)
+44plt.hist(california_df[ ’MedHouseVal’ ], bins=30, color= ’green’ , edgecolor= ’black’ )
+45plt.xlabel( ’Valor Medio de la Vivienda (en $100,000s)’ )
+46plt.ylabel( ’Frecuencia’ )
+47plt.title( ’Distribuci´ on de los Precios de las Viviendas’ )
+48
+49# Gr´ afico de dispersi´ on de la Regresi´ on Lineal
+50plt.subplot(1, 2, 2)
+51plt.scatter(X_test, y_test, color= ’blue’, label= ’Datos Reales’ )
+52plt.plot(X_test, y_pred, color= ’red’, linewidth=2, label= ’Predicci´ on de Regresi´ on’ )
+53plt.xlabel( ’Ingreso Medio’ )
+54plt.ylabel( ’Valor Medio de la Vivienda (en $100,000s)’ )
+55plt.title( ’Regresi´ on Lineal - California Housing Dataset’ )
+56plt.legend()
+57
+58# Guardar la gr´ afica en un archivo .eps
+59plt.savefig( "regresion1.eps" ,format=’eps’)
+/warning_signEl lector puede bajar este programa desde el siguiente v´ ınc ulo:/desktop
+Descripci´ on del Programa de Regresi´ on Lineal en Python. E l objetivo de este programa es predecir el valor
+medio de las viviendas en California utilizando un modelo de regresi´ on lineal basado en el ingreso medio del
+´ area. Se busca comprender la inﬂuencia del ingreso medio en el valor de la vivienda y visualizar esta relaci´ on
+mediante gr´ aﬁcos.
+12.8. MODELOS DE CLASIFICACI ´ON Y REGRESI ´ON 73
+4.5 5.0 5.5 6.0 6.5 7.0 7.5
+Sepal Length2.02.53.03.54.0Sepal WidthDatos de Entrenamiento
+Entrenamiento
+4.5 5.0 5.5 6.0 6.5 7.0 7.5 8.0
+Sepal Length2.53.03.54.04.5Sepal WidthDatos de Prueba
+Prueba
+Figura 12.2: Gr´ aﬁcos sobre el an´ alisis de regresi´ on a par tir deMatplotlib .
+Importaci´ on de Bibliotecas.
+1import numpy as np
+2import pandas as pd
+3import matplotlib.pyplot as plt
+4fromsklearn.datasets import fetch_california_housing
+5fromsklearn.model_selection import train_test_split
+6fromsklearn.linear_model import LinearRegression
+7fromsklearn.metrics import mean_squared_error, r2_score
+Cargar y Preparar los Datos.
+1california_housing = fetch_california_housing()
+2X = california_housing.data
+3y = california_housing.target
+4
+5california_df = pd.DataFrame(X, columns=california_hou sing.feature_names)
+6california_df[ ’MedHouseVal’ ] = y
+7X_medinc = california_df[[ ’MedInc’ ]].values
+Divisi´ on en Conjuntos de Entrenamiento y Prueba.
+1X_train, X_test, y_train, y_test = train_test_split(X_me dinc, y, test_size=0.3, random_state
+=42)
+Muestra del Conjunto de Entrenamiento.
+1# Muestra de las primeras filas de los datos de entrenamiento
+2X_train[:5], y_train[:5]
+3
+4# Ingreso Medio (MedInc), Valor Medio de la Vivienda (MedHou seVal)
+5[[ 8.3252 ], 4.526 ]
+6[[ 8.3014 ], 3.585 ]
+7[[ 7.2574 ], 3.521 ]
+8[[ 5.6431 ], 3.413 ]
+9[[ 3.8462 ], 3.422 ]
+Muestra del Conjunto de Prueba.
+1# Muestra de las primeras filas de los datos de prueba
+2X_test[:5], y_test[:5]
+3
+4# Ingreso Medio (MedInc), Valor Medio de la Vivienda (MedHou seVal)
+5[[ 2.0804 ], 0.477 ]
+6[[ 3.6912 ], 0.458 ]
+74 CAP´ITULO 12. MACHINE LEARNING CON PYTHON
+7[[ 3.2031 ], 5.000 ]
+8[[ 3.2705 ], 2.186 ]
+9[[ 3.0750 ], 2.780 ]
+Creaci´ on y Entrenamiento del Modelo.
+1regressor = LinearRegression()
+2regressor.fit(X_train, y_train)
+Evaluaci´ on del Modelo.
+1y_pred = regressor.predict(X_test)
+2mse = mean_squared_error(y_test, y_pred)
+3r2 = r2_score(y_test, y_pred)
+4print(f"Mean Squared Error: {mse}" )
+5print(f"R^2 Score: {r2}" )
+Visualizaci´ on de Resultados.
+1plt.figure(figsize=(14, 6))
+2...
+3plt.savefig( "regresion.eps" ,format=’eps’)
+4plt.show()
+El histograma muestra la distribuci´ on del valor medio de la s viviendas, proporcionando una idea de la
+variedad y frecuencia de los diferentes valores de vivienda en el conjunto de datos.
+El gr´ aﬁco de dispersi´ on con la l´ ınea de regresi´ on ilustr a la relaci´ on entre el ingreso medio y el valor medio
+de la vivienda. La l´ ınea de regresi´ on predice c´ omo el valo r de la vivienda aumenta con el ingreso medio,
+proporcionando una herramienta visual para comprender est a tendencia.
+Discusi´ on de Resultados de Regresi´ on Lineal. El modelo de regresi´ on lineal ha producido dos m´ etricas clave:
+el Error Cuadr´ atico Medio (MSE) y el coeﬁciente de determin aci´ on (R2Score). A continuaci´ on se discuten
+estos resultados y su signiﬁcado.
+Mean Squared Error (MSE).
+El MSE obtenido es aproximadamente 0.6918. Este valor repre senta el promedio de los cuadrados de las
+diferencias entre los valores observados y los predichos po r el modelo. Un MSE de 0.6918 indica que:
+(1)El cuadrado de la diferencia entre el valor real y el valor pre dicho por el modelo es en promedio 0.6918.
+(2)Lainterpretaci´ ondelMSEdependedelaescaladelavariabl eobjetivo.Silosvaloresobjetivotienenuna
+amplia variaci´ on, un MSE de 0.6918 podr´ ıa ser considerado bajo. Sin embargo, si los valores objetivo
+son menores, el mismo MSE podr´ ıa ser alto.
+(3)ElMSEsolopuedenosersuﬁcienteparaevaluarlaprecisi´ on absolutaocompararmodelossinconsiderar
+la escala de los datos.
+R2Score.
+El coeﬁciente de determinaci´ on, R2, obtenido es aproximadamente 0.4729. Este valor indica que :
+(1)Alrededor del 47.3% de la variabilidad en el valor medio de la vivienda est´ a explicada por el modelo.
+(2)Un R2de 0.4729 sugiere una capacidad de predicci´ on moderada, lo cual implica que hay una cantidad
+signiﬁcativa de variabilidad en el valor de la vivienda que e l modelo no puede explicar.
+(3)Un R2m´ as bajo puede indicar la ausencia de variables importante s en el modelo, relaciones no lineales,
+o que el modelo no se ajusta bien a los datos.
+Los resultados muestran un rendimiento moderado del modelo . El MSE indica un error promedio cuadrado
+de 0.6918 en las predicciones, y el R2muestra que el modelo explica aproximadamente el 47.3% de la
+variabilidad en el valor de la vivienda. Estos resultados pu eden motivar la exploraci´ on de modelos m´ as
+complejos o la inclusi´ on de m´ as caracter´ ısticas para mej orar el rendimiento.
+12.9. CASO PR ´ACTICO 75
+12.9. Caso Pr´ actico
+Python es una herramienta poderosa y vers´ atil para el apren dizaje autom´ atico (machine learning). En este
+art´ ıculo, exploraremos algunas de las razones por las cual es Python se destaca en este campo, como su
+amplia variedad de bibliotecas especializadas, su comunid ad activa de desarrolladores, su facilidad de uso
+y su capacidad para visualizar datos. Adem´ as, presentarem os un caso de estudio que utiliza Python para
+resolver problemas de regresi´ on y clasiﬁcaci´ on, demostr ando su eﬁcacia en la implementaci´ on de modelos de
+aprendizaje autom´ atico.
+Utilizaremos Python y sus bibliotecas de aprendizaje autom ´ atico para abordar un caso pr´ actico que involucra
+regresi´ on y clasiﬁcaci´ on. Mostraremos c´ omo Python simp liﬁca la adquisici´ on de datos, el preprocesamiento,
+el entrenamiento de modelos y la visualizaci´ on de resultad os, destacando as´ ı su utilidad en aplicaciones del
+mundo real en el campo del aprendizaje autom´ atico.
+1#!/usr/bin/env python3
+2
+3# Importar las bibliotecas necesarias
+4import numpy as np
+5import pandas as pd
+6import matplotlib.pyplot as plt
+7fromsklearn.model_selection import train_test_split
+8fromsklearn.linear_model import LinearRegression
+9fromsklearn.ensemble import RandomForestClassifier
+10fromsklearn.metrics import mean_squared_error, accuracy_score
+11
+12# Generar datos de ejemplo para regresi´ on
+13np.random.seed(0)
+14X_regresion = np.random.rand(100, 1) # Caracter´ ıstica de entrada
+15y_regresion = 2 * X_regresion + 1 + 0.1 * np.random.randn(100 , 1)# Variable objetivo
+16
+17# Dividir los datos en conjuntos de entrenamiento y prueba pa ra regresi´ on
+18X_regresion_train, X_regresion_test, y_regresion_trai n, y_regresion_test = train_test_split(
+X_regresion, y_regresion, test_size=0.2, random_state= 0)
+19
+20# Entrenar un modelo de regresi´ on lineal
+21regresion_model = LinearRegression()
+22regresion_model.fit(X_regresion_train, y_regresion_t rain)
+23
+24# Predecir valores con el modelo de regresi´ on
+25y_regresion_pred = regresion_model.predict(X_regresio n_test)
+26
+27# Calcular el error cuadr´ atico medio (MSE) para la regresi´ on
+28mse = mean_squared_error(y_regresion_test, y_regresion _pred)
+29print(f"Error cuadr´ atico medio para regresi´ on: {mse:.2f}" )
+30
+31# Graficar los datos y la l´ ınea de regresi´ on
+32plt.figure(figsize=(8, 6))
+33plt.scatter(X_regresion_test, y_regresion_test, label =’Datos reales’ )
+34plt.plot(X_regresion_test, y_regresion_pred, color= ’red’, linewidth=2, label= ’Regresi´ on
+lineal’ )
+35plt.xlabel( ’Caracter´ ıstica de entrada’ )
+36plt.ylabel( ’Variable objetivo’ )
+37plt.legend()
+38plt.title( ’Regresi´ on lineal’ )
+39plt.savefig( ’regresion_plot.eps’ ,format=’eps’, dpi=300) # Guardar la figura en formato EPS
+40plt.show()
+41
+42# Generar datos de ejemplo para clasificaci´ on
+43X_clasificacion = np.random.rand(100, 2) # Caracter´ ısticas de entrada
+44y_clasificacion = (X_clasificacion[:, 0] + X_clasificaci on[:, 1] > 1).astype( int)#
+Variable objetivo (0 o 1)
+45
+46# Dividir los datos en conjuntos de entrenamiento y prueba pa ra clasificaci´ on
+47X_clasificacion_train, X_clasificacion_test, y_clasif icacion_train, y_clasificacion_test =
+train_test_split(X_clasificacion, y_clasificacion, te st_size=0.2, random_state=0)
+48
+76 CAP´ITULO 12. MACHINE LEARNING CON PYTHON
+0.0 0.2 0.4 0.6 0.8 1.0
+Característica de entrada1.001.251.501.752.002.252.502.753.00V ariable objetivoR egresión lineal
+Datos reales
+R egresión lineal
+Figura 12.3: Gr´ aﬁco de regresi´ on a partir de Matplotlib .
+49# Entrenar un modelo de clasificaci´ on (Random Forest)
+50clasificacion_model = RandomForestClassifier()
+51clasificacion_model.fit(X_clasificacion_train, y_cla sificacion_train)
+52
+53# Predecir clases con el modelo de clasificaci´ on
+54y_clasificacion_pred = clasificacion_model.predict(X_ clasificacion_test)
+55
+56# Calcular la precisi´ on para la clasificaci´ on
+57accuracy = accuracy_score(y_clasificacion_test, y_clas ificacion_pred)
+58print(f"Precisi´ on para clasificaci´ on: {accuracy:.2f}" )
+59
+60# Graficar la clasificaci´ on
+61plt.figure(figsize=(8, 6))
+62plt.scatter(X_clasificacion_test[:, 0], X_clasificaci on_test[:, 1], c=y_clasificacion_pred,
+cmap=plt.cm.Paired)
+63plt.xlabel( ’Caracter´ ıstica 1’ )
+64plt.ylabel( ’Caracter´ ıstica 2’ )
+65plt.title( ’Clasificaci´ on con Random Forest’ )
+66plt.savefig( ’clasificacion_plot.eps’ ,format=’eps’, dpi=300) # Guardar la figura en formato
+EPS
+1./caso_regresion.py
+2Error cuadr´ atico medio para regresi´ on: 0.01
+3The PostScript backend does not support transparency; part ially transparent artists will be
+rendered opaque.
+4Precisi´ on para clasificaci´ on: 1.00
+Los resultados del programa casoregresion.py proporcionan m´ etricas de rendimiento para dos problemas
+de aprendizaje autom´ atico: regresi´ on y clasiﬁcaci´ on.
+Para el problema de regresi´ on, el programa informa un Error Cuadr´ atico Medio (MSE) de 0.01. El MSE es
+una m´ etrica que cuantiﬁca cu´ an cerca est´ an las prediccio nes del modelo de regresi´ on de los valores reales.
+En este caso, un MSE de 0.01 indica que el modelo de regresi´ on lineal tiene un buen rendimiento, ya que el
+error cuadr´ atico medio es bajo, lo que sugiere que las predi cciones se ajustan bien a los datos reales. Esto es
+un indicador positivo de la calidad del modelo de regresi´ on .
+12.9. CASO PR ´ACTICO 77
+0.2 0.4 0.6 0.8 1.0
+Característica 10.00.20.40.60.81.0Característica 2Clasificación con Random F orest
+Figura 12.4: Gr´ aﬁco de clasiﬁcaci´ on a partir de Matplotlib .
+Para el problema de clasiﬁcaci´ on, el programa muestra una p recisi´ on del 100%. La precisi´ on es una m´ etrica
+que mide la proporci´ on de ejemplos clasiﬁcados correctame nte por el modelo. Una precisi´ on del 100% indica
+que el modelo de clasiﬁcaci´ on (Random Forest) ha clasiﬁcad o correctamente todos los ejemplos en el conjunto
+de prueba. Esto sugiere un alto nivel de eﬁcacia en el modelo d e clasiﬁcaci´ on, aunque tambi´ en puede indicar
+que el conjunto de datos de clasiﬁcaci´ on utilizado es relat ivamente simple y f´ acil de separar en clases.
+Los resultados son positivos en ambos casos. El modelo de reg resi´ on lineal tiene un bajo error cuadr´ atico
+medio, lo que indica una buena capacidad de predicci´ on en el problema de regresi´ on. Adem´ as, el modelo
+de clasiﬁcaci´ on tiene una precisi´ on del 100%, lo que indic a una clasiﬁcaci´ on perfecta en el problema de
+clasiﬁcaci´ on. Sin embargo, es importante considerar el co ntexto y la complejidad de los conjuntos de datos
+y modelos utilizados al interpretar estos resultados.
+/warning_signEl lector puede bajar este programa desde el siguiente v´ ınc ulo:/desktop
+Pr´ actica 13.
+Es conveniente que el lector ejecute el programa referido.
+78 CAP´ITULO 12. MACHINE LEARNING CON PYTHON
+Bibliograf´ ıa
+[1]John D. Hunter. Matplotlib: A 2d graphics environment, 2007 .
+[2]OpenAI. ChatGPT.https://chat.openai.com/auth/login , 2023.
+79
+View publication stats

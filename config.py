@@ -1,11 +1,14 @@
 import os
 
+# config.py
+import os
+
+
 # Directorios base del proyecto\ nBASE_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 RAW_PDF_DIR = os.path.join(BASE_DIR, 'data', 'libros_raw')  # PDFs originales
 EXTRACTED_TEXT_DIR = os.path.join(
     BASE_DIR, 'data', 'libros_extraidos')  # Textos limpios
-INDEX_DIR = os.path.join(BASE_DIR, 'data', 'indices')  # Índices TF-IDF y BM25F
 # Metadatos de libros (títulos, autores...)
 METADATA_DIR = os.path.join(BASE_DIR, 'data', 'metadatos')
 
@@ -23,12 +26,13 @@ BM25F_FIELD_WEIGHTS = {
     'cuerpo': 1.0
 }
 
-# Stopwords
-STOPWORDS_PATH = os.path.join(BASE_DIR, 'data', 'stopwords.txt')
-
-# Diccionario de sinónimos para expansión semántica
-SYNONYMS_PATH = os.path.join(BASE_DIR, 'expansion', 'dictionary.json')
-
 # Rendimiento y extensiones
 NUM_WORKERS = 4  # Número de procesos para extracción y preprocesado
 PDF_EXTENSIONS = ['.pdf']  # Extensiones válidas
+
+
+PDF_DIR = os.path.join(BASE_DIR, 'data/libros_raw')
+TEXT_DIR = os.path.join(BASE_DIR, 'data/libros_extraidos')
+INDEX_DIR = os.path.join(BASE_DIR, 'data/indices')
+STOPWORDS_PATH = os.path.join(BASE_DIR, 'data/stopwords.txt')
+SYNONYMS_PATH = os.path.join(BASE_DIR, 'expansion/dictionary.json')

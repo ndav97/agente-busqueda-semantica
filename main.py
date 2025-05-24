@@ -41,17 +41,8 @@ def opcion_buscar():
         print("La consulta no puede estar vacía.")
         return
 
-    try:
-        top_n = int(input("Cantidad de resultados [enter=10]: ") or 10)
-    except ValueError:
-        print("Valor inválido. Usando top_n=10.")
-        top_n = 10
-
-    try:
-        peso = float(input("Peso TF-IDF [0.0-1.0, enter=0.5]: ") or 0.5)
-    except ValueError:
-        print("Valor inválido. Usando peso=0.5.")
-        peso = 0.5
+    peso = 10
+    top_n = 10
 
     print(f"Buscando '{query}' (top {top_n}, peso TF-IDF {peso})")
     results = search(query, top_n=top_n, tfidf_weight=peso)
